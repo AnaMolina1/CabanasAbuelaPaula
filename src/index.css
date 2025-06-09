@@ -1,0 +1,163 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: linear-gradient(135deg, #f5e4a6, #f8f2e3);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #d3d4ee;
+}
+
+/* Eliminamos el flex y centrado para que el contenido comience desde arriba */
+body {
+  background: linear-gradient(135deg, #f5e4a6, #f8f2e3);
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+html {
+  background: linear-gradient(135deg, #f5e4a6, #f8f2e3);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+  }
+  a:hover {
+    color: #9e093b;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.active button {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Transición para las imágenes en el slider */
+.slick-slide img {
+  transition: transform 0.3s ease;
+  transform: scale(0.8); /* Las imágenes laterales serán un 80% de su tamaño */
+}
+
+.slick-center img {
+  transform: scale(1.2); /* La imagen central será un 120% de su tamaño */
+}
+
+/* Aseguramos que el contenedor del slider tenga posición relativa */
+.slick-slider {
+  position: relative;
+}
+
+/* Estilo para las flechas de slick */
+.slick-prev,
+.slick-next {
+  position: absolute; /* Posicionamos respecto al contenedor .slick-slider */
+  z-index: 10; /* Para que aparezcan sobre la imagen */
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 50px; /* Tamaño aumentado para visibilidad */
+  height: 50px;
+  top: 50% !important; /* Centrado verticalmente */
+  transform: translateY(-50%);
+  color: #fff;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  opacity: 1;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+/* Permitir que el efecto de escala se vea fuera de los límites del slider */
+.slick-list {
+  overflow: visible !important;
+}
+
+/* Aseguramos que los slides y la pista no tengan márgenes ni padding extra */
+.slick-slide {
+  margin: 0;
+  padding: 0;
+}
+.slick-track {
+  display: flex !important;
+  align-items: center !important; /* Centrar contenido verticalmente */
+  margin-bottom: 0 !important; /* Eliminar margen inferior */
+  height: 390px !important; /* Reduce la altura del contenedor */
+}
+
+.slick-slide img {
+  opacity: 0.4;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slick-center img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
