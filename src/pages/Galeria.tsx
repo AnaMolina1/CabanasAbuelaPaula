@@ -41,7 +41,7 @@ const Galeria: React.FC = () => {
         breakpoint: 960,
         settings: {
           slidesToShow: 1,
-          centerMode: false,
+          centerMode: true,
           arrows: false,
         },
       },
