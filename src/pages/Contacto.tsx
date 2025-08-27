@@ -17,7 +17,6 @@ const Contacto: React.FC = () => {
         backgroundColor: 'grey.900',
         color: 'grey.100',
         py: 4,
-        mt: 4,
       }}
     >
       <Container maxWidth="lg">
@@ -35,75 +34,74 @@ const Contacto: React.FC = () => {
         </Typography>
 
         <Grid container spacing={2}>
-  {/* Dirección arriba en toda la fila */}
-  <Grid
-    item
-    xs={12}
-    sm={12}
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center', // centrar el contenido
-      textAlign: 'center',
-    }}
-  >
-    <LocationOnIcon sx={{ mr: 1 }} />
-    <Typography variant="body1">
-      Dirección: Calle 123, Tanti, Córdoba, Argentina
-    </Typography>
-  </Grid>
+          {/* Dirección arriba en toda la fila */}
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center', // centrar el contenido
+              textAlign: 'center',
+            }}
+          >
+            <LocationOnIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              Dirección: Calle 123, Tanti, Córdoba, Argentina
+            </Typography>
+          </Grid>
 
-  {/* WhatsApp */}
-  <Grid
-    item
-    xs={12}
-    sm={6}
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center', // centrar el contenido
-      textAlign: 'center',
-    }}
-  >
-    <WhatsAppIcon sx={{ mr: 1 }} />
-    <Typography variant="body1">
-      WhatsApp:{' '}
-      <Link
-        href="https://wa.me/541234567890"
-        color="inherit"
-        underline="hover"
-      >
-        +54 123 456 7890
-      </Link>
-    </Typography>
-  </Grid>
+          {/* WhatsApp */}
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center', // centrar el contenido
+              textAlign: 'center',
+            }}
+          >
+            <WhatsAppIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              WhatsApp:{' '}
+              <Link
+                href="https://wa.me/541234567890"
+                color="inherit"
+                underline="hover"
+              >
+                +54 123 456 7890
+              </Link>
+            </Typography>
+          </Grid>
 
-  {/* Instagram */}
-  <Grid
-    item
-    xs={12}
-    sm={6}
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center', // centrar el contenido
-      textAlign: 'center',
-    }}
-  >
-    <InstagramIcon sx={{ mr: 1 }} />
-    <Typography variant="body1">
-      Instagram:{' '}
-      <Link
-        href="https://www.instagram.com/abuelapaulatanti/?hl=es-la"
-        color="inherit"
-        underline="hover"
-      >
-        @abuelapaulatanti
-      </Link>
-    </Typography>
-  </Grid>
-</Grid>
-
+          {/* Instagram */}
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center', // centrar el contenido
+              textAlign: 'center',
+            }}
+          >
+            <InstagramIcon sx={{ mr: 1 }} />
+            <Typography variant="body1">
+              Instagram:{' '}
+              <Link
+                href="https://www.instagram.com/abuelapaulatanti/?hl=es-la"
+                color="inherit"
+                underline="hover"
+              >
+                @abuelapaulatanti
+              </Link>
+            </Typography>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

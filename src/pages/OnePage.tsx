@@ -33,11 +33,11 @@ const OnePage: React.FC = () => {
   return (
     <Box
       sx={{
-        backgroundImage: 'url(/images/parallax.jpg)',
+        backgroundImage: 'url(/images/parallax1.jpg)',
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        // minHeight: '100vh',
         width: '100%',
       }}
     >
@@ -55,31 +55,38 @@ const OnePage: React.FC = () => {
             <Home />
           </section>
 
-          <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }} />
+          <Box
+            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
+          />
 
-          <section
+          <Box
             id="galeria"
-            style={{
-              padding: '2rem 0',
-              backgroundColor: 'rgba(255,255,255,0.5)',
+            component="section"
+            sx={{
+              py: '2rem',
+              backgroundColor: '#233d22ff',
             }}
           >
             <Galeria />
-          </section>
+          </Box>
 
-          <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }} />
+          <Box
+            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
+          />
 
           <section
             id="cabañas"
             style={{
               padding: '2rem 0',
-              backgroundColor: 'rgba(255, 250, 250, 0.7)',
+              backgroundColor: '#D99058',
             }}
           >
             <Cabañas />
           </section>
 
-          <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }} />
+          <Box
+            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
+          />
 
           <section
             id="ubicacion"
@@ -91,13 +98,12 @@ const OnePage: React.FC = () => {
             <Ubicacion />
           </section>
 
-          <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }} />
-
           <section
             id="contacto"
             style={{
-              padding: '2rem 0',
-              backgroundColor: 'rgba(255,255,255,0.5)',
+              padding: '2rem 0 0 0',
+              justifyContent: 'space-between', // para mantener todo centrado pero pegado abajo
+              backgroundColor: '#212121',
             }}
           >
             <Contacto />

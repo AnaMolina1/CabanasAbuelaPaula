@@ -38,12 +38,12 @@ const Cabañas: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const imagenes = [
-    '/images/imgindividuales/cabana1.jpg',
-    '/images/imgindividuales/cabana2.jpg',
-    '/images/imgindividuales/cabana3.jpg',
-    '/images/imgindividuales/cabana4.jpg',
-    '/images/imgindividuales/cabana5.jpg',
-    '/images/imgindividuales/cabana6.jpg',
+    '/images/imgcolor/cabaña1.jpg',
+    '/images/imgcolor/cabaña2.jpg',
+    '/images/imgcolor/cabaña3.jpg',
+    '/images/imgcolor/cabaña4.jpg',
+    '/images/imgcolor/cabaña5.jpg',
+    '/images/imgcolor/cabaña6.jpg',
   ];
 
   useEffect(() => {
@@ -71,20 +71,21 @@ const Cabañas: React.FC = () => {
 
   return (
     <Container
-  maxWidth="lg"
-  sx={{
-    marginTop: 0,
-    padding: '1rem',
-    backgroundColor: 'transparent', // fuerza transparencia
-  }}
->
+      maxWidth="lg"
+      sx={{
+        marginTop: 0,
+        padding: '1rem',
+        backgroundColor: 'transparent', // fuerza transparencia
+      }}
+    >
       <Typography
-        variant="h3"
+        variant="h2"
         sx={{
           textAlign: 'center',
           mb: 4,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
+          color: '#f5efefff',
         }}
       >
         Nuestras Cabañas
@@ -97,7 +98,7 @@ const Cabañas: React.FC = () => {
           mb: 3,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
-          color: '#555555', // gris oscuro
+          color: '#4c4a44ff',
         }}
       >
         Comodidades
@@ -112,6 +113,7 @@ const Cabañas: React.FC = () => {
           gap: 2,
           mb: 7,
           mt: 6,
+          color: '#4c4a44ff',
         }}
       >
         <motion.div
@@ -176,19 +178,20 @@ const Cabañas: React.FC = () => {
 
       {loading ? (
         <Box
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    minHeight="100vh"
-    width="100%"
-    sx={{
-  background: 'linear-gradient(135deg,rgb(238, 244, 131),rgb(246, 229, 185)) !important',
-  backgroundColor: 'transparent !important',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-}}
-  >
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+          width="100%"
+          sx={{
+            background:
+              'linear-gradient(135deg,rgb(238, 244, 131),rgb(246, 229, 185)) !important',
+            backgroundColor: 'transparent !important',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
           <CircularProgress />
         </Box>
       ) : (
@@ -201,17 +204,17 @@ const Cabañas: React.FC = () => {
                 transition={{ duration: 0.3 }}
               >
                 <Card
-  sx={{
-    borderRadius: '20px',
-    background: 'linear-gradient(135deg, rgba(249, 214, 143, 0.8), rgba(153, 79, 43, 0.8))',
-    backdropFilter: 'blur(6px)', // Efecto elegante
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    textAlign: 'center',
-    paddingBottom: '10px',
-    height: '100%',
-  }}
->
+                  sx={{
+                    borderRadius: '20px',
+                    backgroundColor: '#fcefdaff', // Terracota pastel
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                    backdropFilter: 'blur(6px)', // Efecto elegante
 
+                    textAlign: 'center',
+                    paddingBottom: '10px',
+                    height: '100%',
+                  }}
+                >
                   <CardMedia
                     component="img"
                     height="200"
@@ -234,7 +237,7 @@ const Cabañas: React.FC = () => {
                     >
                       {cabin.nombre}
                     </Typography>
-                    
+
                     <Typography variant="body2" color="text.secondary">
                       <strong>Capacidad:</strong> {cabin.capacidad} personas
                     </Typography>

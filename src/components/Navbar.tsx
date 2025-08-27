@@ -78,14 +78,12 @@ const Navbar: React.FC = () => {
 
   return (
     <AppBar
-  position="fixed"
-  sx={{
-    background: 'linear-gradient(135deg, rgba(249, 208, 126, 0.7), rgba(230, 182, 129, 0.7))', //rgba(255, 250, 240, 0.7), rgba(245, 228, 157, 0.7))',
-    backdropFilter: 'blur(10px)', // Efecto de desenfoque bonito detrás
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  }}
->
-
+      position="fixed"
+      sx={{
+        backgroundColor: '#623a15ff', // marrón oscuro
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+      }}
+    >
       <Toolbar
         sx={{
           height: { xs: '64px', sm: isScrolled ? '60px' : '100px' },
@@ -105,11 +103,11 @@ const Navbar: React.FC = () => {
             >
               <Box
                 component="img"
-                src="/images/logopng.png"
+                src="/images/logo2.png"
                 alt="Logo"
                 sx={{
-                  height: 40,
-                  ml: 1,
+                  height: isMobile ? 55 : 50, // Agrandar logo en mobile
+                  ml: 2,
                 }}
               />
 
@@ -120,7 +118,7 @@ const Navbar: React.FC = () => {
                 sx={{
                   color: 'white',
                   backgroundColor: '#888', // fondo gris
-                  border: '2px solid black', // borde negro
+                  border: '1px solid black', // borde negro
                   borderRadius: '50%', // forma circular
                   padding: '8px', // espacio interno
                   '&:hover': {
@@ -138,15 +136,15 @@ const Navbar: React.FC = () => {
               onClose={handleDrawerToggle}
               slotProps={{
                 paper: {
-                sx: {
-                  backgroundColor: '#f0f0f0', // gris claro
-                  borderLeft: '2px solid black',
-                  width: '240px',
-                  height: 'auto', // <== clave
-      maxHeight: '100vh', // <== opcional, seguridad en pantallas chicas
-      alignSelf: 'flex-start', // <== para que quede arriba
+                  sx: {
+                    backgroundColor: '#f0f0f0', // gris claro
+                    borderLeft: '2px solid black',
+                    width: '240px',
+                    height: 'auto', // <== clave
+                    maxHeight: '100vh', // <== opcional, seguridad en pantallas chicas
+                    alignSelf: 'flex-start', // <== para que quede arriba
+                  },
                 },
-                 }
               }}
             >
               <Box sx={{ p: 2 }}>
@@ -155,28 +153,30 @@ const Navbar: React.FC = () => {
                 <List>
                   {publicNavItems.map((item) => (
                     <ListItemButton
-  key={item.label}
-  component="a"
-  href={`#${item.id}`}
-  sx={{
-    borderBottom: '1px solid rgba(0, 0, 0, 0.1)', // línea sutil entre items
-    fontWeight: 400, // sin negrita
-    paddingY: '0.8rem',
-    backgroundColor:
-      activeSection === item.id ? 'rgba(0, 0, 0, 0.05)' : 'transparent',
-  }}
-  onClick={handleDrawerToggle}
->
-  <ListItemText
-    primary={item.label}
-    primaryTypographyProps={{
-      fontFamily: '"Fredoka", sans-serif',
-      fontWeight: 400, // sin negrita
-      fontSize: '1.1rem',
-      color: '#333',
-    }}
-  />
-</ListItemButton>
+                      key={item.label}
+                      component="a"
+                      href={`#${item.id}`}
+                      sx={{
+                        borderBottom: '1px solid rgba(0, 0, 0, 0.1)', // línea sutil entre items
+                        fontWeight: 400, // sin negrita
+                        paddingY: '0.8rem',
+                        backgroundColor:
+                          activeSection === item.id
+                            ? 'rgba(0, 0, 0, 0.05)'
+                            : 'transparent',
+                      }}
+                      onClick={handleDrawerToggle}
+                    >
+                      <ListItemText
+                        primary={item.label}
+                        primaryTypographyProps={{
+                          fontFamily: '"Fredoka", sans-serif',
+                          fontWeight: 400, // sin negrita
+                          fontSize: '1.1rem',
+                          color: '#333',
+                        }}
+                      />
+                    </ListItemButton>
                   ))}
                   <ListItemButton
                     component={RouterLink}
@@ -201,12 +201,12 @@ const Navbar: React.FC = () => {
           <>
             <Box
               component="img"
-              src="/images/logopng.png"
+              src="/images/logo2.png"
               alt="Logo"
               sx={{
-                height: isScrolled ? 48 : 80,
+                height: isScrolled ? 50 : 70,
                 transition: 'height 0.3s ease',
-                mr: 2,
+                mr: 3,
               }}
             />
             <Box sx={{ flexGrow: 1 }} />
@@ -214,23 +214,28 @@ const Navbar: React.FC = () => {
             {publicNavItems.map((item) => (
               <Button
                 key={item.label}
-                color="inherit"
                 href={`#${item.id}`}
                 sx={{
                   fontFamily: '"Fredoka", sans-serif',
-                  fontWeight: 400,
-                  fontSize: '1.3rem',
-                  color: '#333',
+                  fontWeight: activeSection === item.id ? 600 : 400,
+                  fontSize: '1.1rem',
+                  textTransform: 'uppercase',
+                  color: activeSection === item.id ? '#E38834' : '#FFFFFF',
                   borderBottom:
-                    activeSection === item.id ? '2px solid black' : 'none',
-borderRight: '1px solid rgba(0, 0, 0, 0.1)', // línea sutil entre botones
-    paddingRight: '1rem',
-    paddingLeft: '1rem',
-    '&:last-of-type': {
-      borderRight: 'none', // no poner línea en el último botón
-    },
-  }}
->                {item.label}
+                    activeSection === item.id
+                      ? '2px solid #E38834'
+                      : '2px solid transparent',
+                  borderRadius: 0,
+                  mx: 1.5,
+                  paddingBottom: '4px',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: '#E38834',
+                    borderBottom: '2px solid #E38834',
+                  },
+                }}
+              >
+                {item.label}
               </Button>
             ))}
 

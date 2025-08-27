@@ -54,12 +54,13 @@ const Galeria: React.FC = () => {
       sx={{ marginTop: 0, paddingX: '1rem', paddingBottom: 0 }}
     >
       <Typography
-        variant="h3"
+        variant="h2"
         sx={{
           textAlign: 'center',
           mb: 4,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
+          color: '#FFFFFF',
         }}
       >
         Galería

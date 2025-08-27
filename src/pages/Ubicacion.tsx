@@ -39,12 +39,11 @@ const Ubicacion: React.FC = () => {
           mb: 4,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
+          color: '#f5efefff',
         }}
       >
         Ubicación
       </Typography>
-
-     
 
       {/* 🔵 Mapa + Botón flotante */}
       <Box sx={{ position: 'relative', marginTop: '2rem' }}>
