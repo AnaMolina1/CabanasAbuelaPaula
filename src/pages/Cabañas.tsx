@@ -206,7 +206,7 @@ const Cabañas: React.FC = () => {
                 <Card
                   sx={{
                     borderRadius: '20px',
-                    backgroundColor: '#fcefdaff', // Terracota pastel
+                    backgroundColor: '#8d7347ff', // Terracota pastel
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     backdropFilter: 'blur(6px)', // Efecto elegante
 

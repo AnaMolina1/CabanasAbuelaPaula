@@ -14,7 +14,7 @@ const Contacto: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: 'grey.900',
+        backgroundColor: '#222a1eff',
         color: 'grey.100',
         py: 4,
       }}

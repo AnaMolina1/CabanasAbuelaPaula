@@ -64,7 +64,9 @@ const OnePage: React.FC = () => {
             component="section"
             sx={{
               py: '2rem',
-              backgroundColor: '#233d22ff',
+              //backgroundColor: '#eeaf42ff',
+              //backgroundColor: '#2b440aff',
+              backgroundImage: 'linear-gradient(to bottom, #2b440aff, #78866B)',
             }}
           >
             <Galeria />
@@ -78,7 +80,9 @@ const OnePage: React.FC = () => {
             id="cabañas"
             style={{
               padding: '2rem 0',
-              backgroundColor: '#D99058',
+              //backgroundColor: '#f6f0a2f0',
+              backgroundImage:
+                'linear-gradient(to bottom, #f3c665f0, #f5eaabff)',
             }}
           >
             <Cabañas />
@@ -103,7 +107,7 @@ const OnePage: React.FC = () => {
             style={{
               padding: '2rem 0 0 0',
               justifyContent: 'space-between', // para mantener todo centrado pero pegado abajo
-              backgroundColor: '#212121',
+              backgroundColor: '#222a1eff',
             }}
           >
             <Contacto />

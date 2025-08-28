@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         <Box
           sx={{
             width: { xs: '100%', md: '50%' },
-            backgroundColor: '#fd8760ff',
+            backgroundColor: '#f8c25cb6',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
