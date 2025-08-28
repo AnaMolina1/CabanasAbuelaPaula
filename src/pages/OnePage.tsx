@@ -63,7 +63,7 @@ const OnePage: React.FC = () => {
             id="galeria"
             component="section"
             sx={{
-              py: '2rem',
+              py: '0,5rem',
               //backgroundColor: '#eeaf42ff',
               //backgroundColor: '#2b440aff',
               //backgroundImage:
@@ -82,7 +82,7 @@ const OnePage: React.FC = () => {
           <section
             id="cabañas"
             style={{
-              padding: '2rem 0',
+              padding: '0rem 0',
               //backgroundColor: '#f6f0a2f0',
               backgroundImage:
                 'linear-gradient(to bottom, #b36422ff, rgba(189, 109, 43, 1))',

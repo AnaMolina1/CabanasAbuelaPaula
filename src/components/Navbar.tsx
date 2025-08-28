@@ -120,17 +120,17 @@ const Navbar: React.FC = () => {
                 aria-label="menu"
                 onClick={handleDrawerToggle}
                 sx={{
-                  color: 'white',
-                  backgroundColor: '#888', // fondo gris
-                  border: '1px solid black', // borde negro
+                  //color: 'white',
+                  backgroundColor: '#dba1a1ff', // fondo
+                  border: '1px solid #a06c6c', // borde
                   borderRadius: '50%', // forma circular
                   padding: '8px', // espacio interno
                   '&:hover': {
-                    backgroundColor: '#666', // más oscuro al hacer hover
+                    backgroundColor: '#836262ff', // más oscuro al hacer hover
                   },
                 }}
               >
-                <MenuIcon />
+                <MenuIcon sx={{ color: '#a06c6c' }} />
               </IconButton>
             </Box>
 

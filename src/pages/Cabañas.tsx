@@ -95,7 +95,7 @@ const Cabañas: React.FC = () => {
         variant="h4"
         sx={{
           textAlign: 'center',
-          mt: 6,
+          mt: 5,
           mb: 3,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
@@ -113,7 +113,7 @@ const Cabañas: React.FC = () => {
           flexWrap: 'wrap',
           gap: 2,
           mb: 7,
-          mt: 6,
+          mt: 2,
           color: '#fbf6eaff',
         }}
       >
