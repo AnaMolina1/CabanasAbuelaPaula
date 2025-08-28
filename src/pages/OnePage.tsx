@@ -66,7 +66,10 @@ const OnePage: React.FC = () => {
               py: '2rem',
               //backgroundColor: '#eeaf42ff',
               //backgroundColor: '#2b440aff',
-              backgroundImage: 'linear-gradient(to bottom, #2b440aff, #78866B)',
+              //backgroundImage:
+              //'linear-gradient(to bottom, #304713ff, #5b7542ff)',
+              backgroundImage:
+                'linear-gradient(to bottom, #de9312ff, #f2ecc8ff)',
             }}
           >
             <Galeria />
@@ -82,7 +85,7 @@ const OnePage: React.FC = () => {
               padding: '2rem 0',
               //backgroundColor: '#f6f0a2f0',
               backgroundImage:
-                'linear-gradient(to bottom, #f3c665f0, #f5eaabff)',
+                'linear-gradient(to bottom, #b36422ff, rgba(189, 109, 43, 1))',
             }}
           >
             <Cabañas />

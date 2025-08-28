@@ -14,6 +14,7 @@ import Divider from '@mui/material/Divider';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useLocation } from 'react-router-dom';
 
 const publicNavItems = [
   { label: 'Inicio', id: 'inicio' },
@@ -26,6 +27,8 @@ const publicNavItems = [
 const Navbar: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,8 +83,8 @@ const Navbar: React.FC = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: '#8f5520ff',
-        //backgroundColor: '#623a15ff', // marrón oscuro
+        //backgroundColor: '#c34830ff',
+        backgroundColor: '#862e10ff',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
       }}
     >
@@ -179,21 +182,23 @@ const Navbar: React.FC = () => {
                       />
                     </ListItemButton>
                   ))}
-                  <ListItemButton
-                    component={RouterLink}
-                    to="/admin"
-                    onClick={handleDrawerToggle}
-                  >
-                    <ListItemText
-                      primary="Admin Panel"
-                      primaryTypographyProps={{
-                        fontFamily: '"Fredoka", sans-serif',
-                        fontWeight: 500,
-                        fontSize: '1.1rem',
-                        color: 'black',
-                      }}
-                    />
-                  </ListItemButton>
+                  {!isAdminRoute && (
+                    <ListItemButton
+                      component={RouterLink}
+                      to="/admin"
+                      onClick={handleDrawerToggle}
+                    >
+                      <ListItemText
+                        primary="Admin Panel"
+                        primaryTypographyProps={{
+                          fontFamily: '"Fredoka", sans-serif',
+                          fontWeight: 500,
+                          fontSize: '1.1rem',
+                          color: 'black',
+                        }}
+                      />
+                    </ListItemButton>
+                  )}
                 </List>
               </Box>
             </Drawer>
@@ -212,47 +217,51 @@ const Navbar: React.FC = () => {
             />
             <Box sx={{ flexGrow: 1 }} />
 
-            {publicNavItems.map((item) => (
-              <Button
-                key={item.label}
-                href={`#${item.id}`}
-                sx={{
-                  fontFamily: '"Fredoka", sans-serif',
-                  fontWeight: activeSection === item.id ? 600 : 400,
-                  fontSize: '1.1rem',
-                  textTransform: 'uppercase',
-                  color: activeSection === item.id ? '#E38834' : '#FFFFFF',
-                  borderBottom:
-                    activeSection === item.id
-                      ? '2px solid #E38834'
-                      : '2px solid transparent',
-                  borderRadius: 0,
-                  mx: 1.5,
-                  paddingBottom: '4px',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    color: '#E38834',
-                    borderBottom: '2px solid #E38834',
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
+            {!isAdminRoute && (
+              <>
+                {publicNavItems.map((item) => (
+                  <Button
+                    key={item.label}
+                    href={`#${item.id}`}
+                    sx={{
+                      fontFamily: '"Fredoka", sans-serif',
+                      fontWeight: activeSection === item.id ? 600 : 400,
+                      fontSize: '1.1rem',
+                      textTransform: 'uppercase',
+                      color: activeSection === item.id ? '#E38834' : '#FFFFFF',
+                      borderBottom:
+                        activeSection === item.id
+                          ? '2px solid #E38834'
+                          : '2px solid transparent',
+                      borderRadius: 0,
+                      mx: 1.5,
+                      paddingBottom: '4px',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        color: '#E38834',
+                        borderBottom: '2px solid #E38834',
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
 
-            <Button
-              color="inherit"
-              component={RouterLink}
-              to="/admin"
-              sx={{
-                fontFamily: '"Fredoka", sans-serif',
-                fontWeight: 700,
-                fontSize: '1.1rem',
-                color: '#444444',
-              }}
-            >
-              Admin Panel
-            </Button>
+                <Button
+                  color="inherit"
+                  component={RouterLink}
+                  to="/admin"
+                  sx={{
+                    fontFamily: '"Fredoka", sans-serif',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    color: '#444444',
+                  }}
+                >
+                  Admin Panel
+                </Button>
+              </>
+            )}
           </>
         )}
       </Toolbar>

@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         <Box
           sx={{
             width: { xs: '100%', md: '50%' },
-            backgroundColor: '#f8c25cb6',
+            backgroundColor: '#33460ee0',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -132,7 +132,7 @@ const Home: React.FC = () => {
               fontFamily: '"Dancing Script", cursive',
               fontWeight: 700,
               textAlign: 'center',
-              color: '#4A341F',
+              color: '#c7bfbbff',
             }}
           >
             Sobre Abuela Paula...

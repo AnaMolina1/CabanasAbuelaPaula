@@ -39,7 +39,7 @@ const Ubicacion: React.FC = () => {
           mb: 4,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
-          color: '#f5efefff',
+          color: '#ffffffff',
         }}
       >
         Ubicación

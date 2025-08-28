@@ -75,7 +75,8 @@ const Cabañas: React.FC = () => {
       sx={{
         marginTop: 0,
         padding: '1rem',
-        backgroundColor: 'transparent', // fuerza transparencia
+
+        //backgroundColor: 'transparent', // fuerza transparencia
       }}
     >
       <Typography
@@ -85,7 +86,7 @@ const Cabañas: React.FC = () => {
           mb: 4,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
-          color: '#f5efefff',
+          color: '#ffffffff',
         }}
       >
         Nuestras Cabañas
@@ -98,7 +99,7 @@ const Cabañas: React.FC = () => {
           mb: 3,
           fontFamily: '"Cinzel", serif',
           fontWeight: 'bold',
-          color: '#4c4a44ff',
+          color: '#fbf6eaff',
         }}
       >
         Comodidades
@@ -113,7 +114,7 @@ const Cabañas: React.FC = () => {
           gap: 2,
           mb: 7,
           mt: 6,
-          color: '#4c4a44ff',
+          color: '#fbf6eaff',
         }}
       >
         <motion.div
@@ -206,7 +207,7 @@ const Cabañas: React.FC = () => {
                 <Card
                   sx={{
                     borderRadius: '20px',
-                    backgroundColor: '#8d7347ff', // Terracota pastel
+                    backgroundColor: '#eddcccff',
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                     backdropFilter: 'blur(6px)', // Efecto elegante
 
