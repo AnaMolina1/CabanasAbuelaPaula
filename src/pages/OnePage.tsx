@@ -63,7 +63,7 @@ const OnePage: React.FC = () => {
             id="galeria"
             component="section"
             sx={{
-              py: '0,5rem',
+              padding: '0rem 0',
               //backgroundColor: '#eeaf42ff',
               //backgroundColor: '#2b440aff',
               //backgroundImage:
@@ -114,6 +114,31 @@ const OnePage: React.FC = () => {
             }}
           >
             <Contacto />
+            {/* Footer simple al final de Contacto */}
+            <Box
+              component="footer"
+              sx={{
+                backgroundColor: '#141514ff',
+                color: '#ffffffcc',
+                textAlign: 'center',
+                py: 2,
+                px: 1,
+                fontSize: '0.9rem',
+                fontFamily: '"Fredoka", sans-serif',
+              }}
+            >
+              © Cabañas Abuela Paula, 2025.{' '}
+              <a
+                href="/privacidad"
+                style={{
+                  color: '#ffffffcc',
+                  textDecoration: 'underline',
+                  marginLeft: '4px',
+                }}
+              >
+                Política de privacidad
+              </a>
+            </Box>
           </section>
 
           <WhatsAppButton />

@@ -12,7 +12,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 const Contacto: React.FC = () => {
   return (
     <Box
-      component="footer"
+      component="section"
       sx={{
         backgroundColor: '#222a1eff',
         color: 'grey.100',
