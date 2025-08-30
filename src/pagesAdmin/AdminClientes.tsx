@@ -28,6 +28,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import '../styles/TablaResponsive.css';
 
 interface Cliente {
   id?: string;
@@ -142,15 +143,8 @@ const AdminClientes: React.FC = () => {
         + AGREGAR CLIENTE
       </Button>
 
-      <TableContainer
-        component={Paper}
-        sx={{
-          marginTop: 2,
-          overflowX: 'auto',
-          backgroundColor: '#fffaf2', // beige claro de fondo para toda la tabla
-        }}
-      >
-        <Table sx={{ minWidth: 600, borderCollapse: 'collapse' }}>
+      <TableContainer component={Paper} className="tabla-responsive">
+        <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
               <TableCell

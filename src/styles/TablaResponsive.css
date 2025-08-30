@@ -1,0 +1,12 @@
+/* Hace que cualquier contenedor con esta clase tenga scroll horizontal fijo */
+.tabla-responsive {
+  width: 100%;
+  overflow-x: auto; /* habilita la barra */
+  -webkit-overflow-scrolling: touch; /* desplazamiento suave en móviles */
+}
+
+/* Obliga a la tabla a no comprimirse en pantallas pequeñas */
+.tabla-responsive table {
+  min-width: 700px; /* ajustá según tus columnas */
+  border-collapse: collapse;
+}
