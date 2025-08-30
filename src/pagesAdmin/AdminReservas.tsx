@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   collection,
   getDocs,
@@ -68,6 +68,8 @@ const AdminReservas = () => {
     useState('');
   const [nuevoCliente, setNuevoCliente] = useState('');
   const [filtroCabana, setFiltroCabana] = useState<string>('todas');
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tableRef = useRef<HTMLTableElement | null>(null);
 
   useEffect(() => {
     const fetchReservas = async () => {
@@ -309,6 +311,20 @@ const AdminReservas = () => {
     }
   };
 
+  // (opcional) Diagnóstico: ver anchos reales
+  useEffect(() => {
+    const c = containerRef.current;
+    const t = tableRef.current;
+    if (c && t) {
+      console.log(
+        'Container width:',
+        c.clientWidth,
+        'Table width:',
+        t.scrollWidth,
+      );
+    }
+  }, []);
+
   return (
     <Container>
       <Typography
@@ -320,6 +336,13 @@ const AdminReservas = () => {
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
           color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+          whiteSpace: 'normal',
+          wordWrap: 'break-word',
+          fontSize: {
+            xs: '2.5rem', // pantallas muy chicas
+            sm: '3rem', // tablets
+            md: '2.5rem', // escritorio
+          },
         }}
       >
         Gestión de Reservas
@@ -374,109 +397,125 @@ const AdminReservas = () => {
         </Select>
       </Box>
       <TableContainer
-        component={Paper}
+        ref={containerRef}
         sx={{
-          backgroundColor: '#fffaf2',
-          marginTop: 2,
+          mt: 2,
+          width: '100%',
+          maxWidth: '100vw',
+          overflowX: 'auto', // activa scroll horizontal
+          overflowY: 'hidden',
+          WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-x pan-y', // habilita gesto horizontal
+          // Fuerza que la tabla sea más ancha que el contenedor
+          '& table': { minWidth: 800 },
         }}
       >
-        <Table sx={{ borderCollapse: 'collapse', minWidth: 800 }}>
-          <TableHead>
-            <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
-              {[
-                'Cabaña',
-                'Cliente',
-                'Fecha Entrada',
-                'Fecha Salida',
-                'Cantidad Días',
-                'Estado',
-                'Observaciones',
-                'Cantidad Personas',
-                'Acciones',
-              ].map((titulo) => (
-                <TableCell
-                  key={titulo}
-                  sx={{
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                    color: '#ffffff',
-                    border: '1px solid #ddd',
-                  }}
-                >
-                  {titulo}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
+        {/* 2) Si querés el “look” de Paper, envolvemos por fuera */}
+        <Paper
+          sx={{ display: 'inline-block' /* se ajusta al ancho de la tabla */ }}
+        >
+          <Table ref={tableRef} sx={{ minWidth: 800 }}>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+                {[
+                  'Cabaña',
+                  'Cliente',
+                  'Fecha Entrada',
+                  'Fecha Salida',
+                  'Cantidad Días',
+                  'Estado',
+                  'Observaciones',
+                  'Cantidad Personas',
+                  'Acciones',
+                ].map((titulo) => (
+                  <TableCell
+                    key={titulo}
+                    sx={{
+                      fontWeight: 'bold',
+                      fontSize: '1rem',
+                      color: '#ffffff',
+                      border: '1px solid #ddd',
+                    }}
+                  >
+                    {titulo}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            {reservas
-              .filter(
-                (reserva) =>
-                  filtroCabana === 'todas' || reserva.cabanaId === filtroCabana,
-              )
-              .map((reserva) => (
-                <TableRow
-                  key={reserva.id}
-                  sx={{
-                    backgroundColor: '#fffaf2',
-                    '&:hover': {
-                      backgroundColor: '#f0e6d6',
-                    },
-                  }}
-                >
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {cabanas.find((c) => c.id === reserva.cabanaId)?.nombre ||
-                      'Desconocida'}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {clientes.find(
-                      (cliente) => cliente.id === reserva.clienteId,
-                    )?.nombre || reserva.clienteId}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {reserva.fechaEntrada
-                      ? reserva.fechaEntrada
-                          .toDate()
-                          .toISOString()
-                          .split('T')[0]
-                      : 'N/A'}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {reserva.fechaSalida
-                      ? reserva.fechaSalida.toDate().toISOString().split('T')[0]
-                      : 'N/A'}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {reserva.cantidadDias}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {getEstadoIcono(reserva.estado)}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {reserva.observaciones}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    {reserva.cantidadPersonas}
-                  </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
-                    <IconButton
-                      color="primary"
-                      onClick={() => handleEditReserva(reserva)}
-                    >
-                      <Edit />
-                    </IconButton>
-                    <IconButton
-                      color="secondary"
-                      onClick={() => handleDeleteReserva(reserva.id)}
-                    >
-                      <Delete />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
+            <TableBody>
+              {reservas
+                .filter(
+                  (reserva) =>
+                    filtroCabana === 'todas' ||
+                    reserva.cabanaId === filtroCabana,
+                )
+                .map((reserva) => (
+                  <TableRow
+                    key={reserva.id}
+                    sx={{
+                      backgroundColor: '#fffaf2',
+                      '&:hover': {
+                        backgroundColor: '#f0e6d6',
+                      },
+                    }}
+                  >
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {cabanas.find((c) => c.id === reserva.cabanaId)?.nombre ||
+                        'Desconocida'}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {clientes.find(
+                        (cliente) => cliente.id === reserva.clienteId,
+                      )?.nombre || reserva.clienteId}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {reserva.fechaEntrada
+                        ? reserva.fechaEntrada
+                            .toDate()
+                            .toISOString()
+                            .split('T')[0]
+                        : 'N/A'}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {reserva.fechaSalida
+                        ? reserva.fechaSalida
+                            .toDate()
+                            .toISOString()
+                            .split('T')[0]
+                        : 'N/A'}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {reserva.cantidadDias}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {getEstadoIcono(reserva.estado)}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {reserva.observaciones}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      {reserva.cantidadPersonas}
+                    </TableCell>
+                    <TableCell sx={{ border: '1px solid #eee' }}>
+                      <IconButton
+                        color="primary"
+                        onClick={() => handleEditReserva(reserva)}
+                      >
+                        <Edit />
+                      </IconButton>
+                      <IconButton
+                        color="secondary"
+                        onClick={() => handleDeleteReserva(reserva.id)}
+                      >
+                        <Delete />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </Paper>
       </TableContainer>
 
       <Dialog open={addOpen} onClose={() => setAddOpen(false)}>

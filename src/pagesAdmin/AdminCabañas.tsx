@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   collection,
   getDocs,
@@ -45,6 +45,8 @@ const AdminCabanas = () => {
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [selectedCabana, setSelectedCabana] = useState<Cabana | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tableRef = useRef<HTMLTableElement | null>(null);
 
   useEffect(() => {
     const fetchCabanas = async () => {
@@ -120,6 +122,20 @@ const AdminCabanas = () => {
     setDescripcion('');
   };
 
+  // (opcional) Diagnóstico: ver anchos reales
+  useEffect(() => {
+    const c = containerRef.current;
+    const t = tableRef.current;
+    if (c && t) {
+      console.log(
+        'Container width:',
+        c.clientWidth,
+        'Table width:',
+        t.scrollWidth,
+      );
+    }
+  }, []);
+
   return (
     <Container>
       <Typography
@@ -131,84 +147,102 @@ const AdminCabanas = () => {
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
           color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+          whiteSpace: 'normal',
+          wordWrap: 'break-word',
+          fontSize: {
+            xs: '2.8rem', // pantallas muy chicas
+            sm: '3rem', // tablets
+            md: '2.5rem', // escritorio
+          },
         }}
       >
         Gestión de Cabañas
       </Typography>
 
       <TableContainer
-        component={Paper}
+        ref={containerRef}
         sx={{
-          backgroundColor: '#fffaf2', // Fondo beige claro
-          marginTop: 2,
-          overflowX: 'auto',
+          mt: 2,
+          width: '100%',
+          maxWidth: '100vw',
+          overflowX: 'auto', // activa scroll horizontal
+          overflowY: 'hidden',
+          WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-x pan-y', // habilita gesto horizontal
+          // Fuerza que la tabla sea más ancha que el contenedor
+          '& table': { minWidth: 800 },
         }}
       >
-        <Table sx={{ borderCollapse: 'collapse' }}>
-          <TableHead>
-            <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
-              {[
-                'Nombre',
-                'Capacidad',
-                'Ubicación',
-                'Descripción',
-                'Acciones',
-              ].map((titulo) => (
-                <TableCell
-                  key={titulo}
+        {/* 2) Si querés el “look” de Paper, envolvemos por fuera */}
+        <Paper
+          sx={{ display: 'inline-block' /* se ajusta al ancho de la tabla */ }}
+        >
+          <Table ref={tableRef} sx={{ minWidth: 800 }}>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+                {[
+                  'Nombre',
+                  'Capacidad',
+                  'Ubicación',
+                  'Descripción',
+                  'Acciones',
+                ].map((titulo) => (
+                  <TableCell
+                    key={titulo}
+                    sx={{
+                      fontWeight: 'bold',
+                      fontSize: '1rem',
+                      color: '#ffffff', // Texto blanco
+                      border: '1px solid #ddd',
+                    }}
+                  >
+                    {titulo}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {cabanas.map((cabana) => (
+                <TableRow
+                  key={cabana.id}
                   sx={{
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                    color: '#ffffff', // Texto blanco
-                    border: '1px solid #ddd',
+                    backgroundColor: '#fffaf2',
+                    '&:hover': {
+                      backgroundColor: '#f0e6d6',
+                    },
                   }}
                 >
-                  {titulo}
-                </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cabana.nombre}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cabana.capacidad}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cabana.ubicacion}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cabana.descripcion}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleEditCabana(cabana)}
+                    >
+                      <Edit />
+                    </IconButton>
+                    <IconButton
+                      color="secondary"
+                      onClick={() => handleDeleteCabana(cabana.id)}
+                    >
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
               ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {cabanas.map((cabana) => (
-              <TableRow
-                key={cabana.id}
-                sx={{
-                  backgroundColor: '#fffaf2',
-                  '&:hover': {
-                    backgroundColor: '#f0e6d6',
-                  },
-                }}
-              >
-                <TableCell sx={{ border: '1px solid #eee' }}>
-                  {cabana.nombre}
-                </TableCell>
-                <TableCell sx={{ border: '1px solid #eee' }}>
-                  {cabana.capacidad}
-                </TableCell>
-                <TableCell sx={{ border: '1px solid #eee' }}>
-                  {cabana.ubicacion}
-                </TableCell>
-                <TableCell sx={{ border: '1px solid #eee' }}>
-                  {cabana.descripcion}
-                </TableCell>
-                <TableCell sx={{ border: '1px solid #eee' }}>
-                  <IconButton
-                    color="primary"
-                    onClick={() => handleEditCabana(cabana)}
-                  >
-                    <Edit />
-                  </IconButton>
-                  <IconButton
-                    color="secondary"
-                    onClick={() => handleDeleteCabana(cabana.id)}
-                  >
-                    <Delete />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableBody>
+          </Table>
+        </Paper>
       </TableContainer>
 
       <Button
