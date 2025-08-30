@@ -83,6 +83,7 @@ const Navbar: React.FC = () => {
     <AppBar
       position="fixed"
       sx={{
+        // Color y sombra de la barra superior (navbar)
         //backgroundColor: '#c34830ff',
         backgroundColor: '#862e10ff',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
@@ -90,12 +91,14 @@ const Navbar: React.FC = () => {
     >
       <Toolbar
         sx={{
+          // Altura dinámica según scroll y tamaño de pantalla
           height: { xs: '64px', sm: isScrolled ? '60px' : '100px' },
           transition: 'height 0.3s ease',
           minHeight: { xs: '64px', sm: 'auto' },
         }}
       >
         {isMobile ? (
+          // ✅ VISTA MOBILE
           <>
             <Box
               sx={{
@@ -114,7 +117,7 @@ const Navbar: React.FC = () => {
                   ml: 2,
                 }}
               />
-
+              {/* Botón hamburguesa para abrir Drawer */}
               <IconButton
                 edge="end"
                 aria-label="menu"
@@ -134,6 +137,7 @@ const Navbar: React.FC = () => {
               </IconButton>
             </Box>
 
+            {/* Drawer lateral para mobile */}
             <Drawer
               anchor="right"
               open={drawerOpen}
@@ -141,9 +145,9 @@ const Navbar: React.FC = () => {
               slotProps={{
                 paper: {
                   sx: {
-                    backgroundColor: '#f0f0f0', // gris claro
+                    backgroundColor: '#b7aca3ff',
                     borderLeft: '2px solid black',
-                    width: '240px',
+                    width: '160px',
                     height: 'auto', // <== clave
                     maxHeight: '100vh', // <== opcional, seguridad en pantallas chicas
                     alignSelf: 'flex-start', // <== para que quede arriba
@@ -152,16 +156,27 @@ const Navbar: React.FC = () => {
               }}
             >
               <Box sx={{ p: 2 }}>
-                <Typography variant="h6">Menú</Typography>
+                <Box
+                  component="img"
+                  src="/images/logo2.png"
+                  alt="Logo"
+                  sx={{
+                    height: 50, // ajustá según lo que consideres “bien chiquito”
+                    display: 'block',
+                    margin: '0 auto',
+                    mb: 1,
+                  }}
+                />
                 <Divider />
                 <List>
+                  {/* Ítems del menú público (anclados por ID) */}
                   {publicNavItems.map((item) => (
                     <ListItemButton
                       key={item.label}
                       component="a"
                       href={`#${item.id}`}
                       sx={{
-                        borderBottom: '1px solid rgba(0, 0, 0, 0.1)', // línea sutil entre items
+                        borderBottom: '1px solid rgba(18, 18, 18, 0.46)', // línea sutil entre items
                         fontWeight: 400, // sin negrita
                         paddingY: '0.8rem',
                         backgroundColor:
@@ -182,6 +197,8 @@ const Navbar: React.FC = () => {
                       />
                     </ListItemButton>
                   ))}
+
+                  {/* Botón hacia Admin Panel (solo si NO está en ruta admin) */}
                   {!isAdminRoute && (
                     <ListItemButton
                       component={RouterLink}
@@ -203,8 +220,33 @@ const Navbar: React.FC = () => {
               </Box>
             </Drawer>
           </>
+        ) : isAdminRoute ? (
+          // ✅ VISTA ADMIN (modo escritorio): texto centrado
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              py: 1,
+            }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 'normal',
+                fontFamily: '"Fredoka", sans-serif',
+                fontSize: isScrolled ? '3.3rem' : '3.5rem',
+                transition: 'font-size 0.3s ease',
+              }}
+            >
+              Panel Administrador
+            </Typography>
+          </Box>
         ) : (
+          // ✅ Versión pública con logo a la izquierda + botones
           <>
+            {/* Logo en escritorio */}
             <Box
               component="img"
               src="/images/logo2.png"
@@ -215,8 +257,10 @@ const Navbar: React.FC = () => {
                 mr: 3,
               }}
             />
+            {/* Espacio para empujar los botones a la derecha */}
             <Box sx={{ flexGrow: 1 }} />
 
+            {/* Botones de navegación públicos */}
             {!isAdminRoute && (
               <>
                 {publicNavItems.map((item) => (
@@ -247,6 +291,7 @@ const Navbar: React.FC = () => {
                   </Button>
                 ))}
 
+                {/* Botón Admin Panel visible también en escritorio */}
                 <Button
                   color="inherit"
                   component={RouterLink}

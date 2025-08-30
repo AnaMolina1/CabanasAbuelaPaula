@@ -122,29 +122,76 @@ const AdminCabanas = () => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h4"
+        align="center"
+        gutterBottom
+        sx={{
+          fontWeight: 'bold',
+          fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
+          textDecoration: 'underline',
+          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+        }}
+      >
         Gestión de Cabañas
       </Typography>
 
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer
+        component={Paper}
+        sx={{
+          backgroundColor: '#fffaf2', // Fondo beige claro
+          marginTop: 2,
+          overflowX: 'auto',
+        }}
+      >
+        <Table sx={{ borderCollapse: 'collapse' }}>
           <TableHead>
-            <TableRow>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Capacidad</TableCell>
-              <TableCell>Ubicación</TableCell>
-              <TableCell>Descripción</TableCell>
-              <TableCell>Acciones</TableCell>
+            <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+              {[
+                'Nombre',
+                'Capacidad',
+                'Ubicación',
+                'Descripción',
+                'Acciones',
+              ].map((titulo) => (
+                <TableCell
+                  key={titulo}
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: '1rem',
+                    color: '#ffffff', // Texto blanco
+                    border: '1px solid #ddd',
+                  }}
+                >
+                  {titulo}
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {cabanas.map((cabana) => (
-              <TableRow key={cabana.id}>
-                <TableCell>{cabana.nombre}</TableCell>
-                <TableCell>{cabana.capacidad}</TableCell>
-                <TableCell>{cabana.ubicacion}</TableCell>
-                <TableCell>{cabana.descripcion}</TableCell>
-                <TableCell>
+              <TableRow
+                key={cabana.id}
+                sx={{
+                  backgroundColor: '#fffaf2',
+                  '&:hover': {
+                    backgroundColor: '#f0e6d6',
+                  },
+                }}
+              >
+                <TableCell sx={{ border: '1px solid #eee' }}>
+                  {cabana.nombre}
+                </TableCell>
+                <TableCell sx={{ border: '1px solid #eee' }}>
+                  {cabana.capacidad}
+                </TableCell>
+                <TableCell sx={{ border: '1px solid #eee' }}>
+                  {cabana.ubicacion}
+                </TableCell>
+                <TableCell sx={{ border: '1px solid #eee' }}>
+                  {cabana.descripcion}
+                </TableCell>
+                <TableCell sx={{ border: '1px solid #eee' }}>
                   <IconButton
                     color="primary"
                     onClick={() => handleEditCabana(cabana)}

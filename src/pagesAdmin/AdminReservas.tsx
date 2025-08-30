@@ -31,6 +31,7 @@ import {
   Select,
   MenuItem,
   SelectChangeEvent,
+  Box,
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 import {
@@ -310,47 +311,104 @@ const AdminReservas = () => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h4"
+        align="center"
+        gutterBottom
+        sx={{
+          fontWeight: 'bold',
+          fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
+          textDecoration: 'underline',
+          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+        }}
+      >
         Gestión de Reservas
       </Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setAddOpen(true)}
+      <Box mt={2}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setAddOpen(true)}
+        >
+          + AGREGAR RESERVA
+        </Button>
+      </Box>
+      <Box mt={2}>
+        <Select
+          value={filtroCabana}
+          onChange={handleFiltroCabana}
+          displayEmpty
+          margin="dense"
+          sx={{
+            marginTop: 2,
+            marginBottom: 2,
+            border: '1px solid #ccc',
+            borderRadius: '6px',
+            backgroundColor: '#fdf7f2', // beige suave
+            fontWeight: 'bold',
+            fontFamily: 'Poppins, sans-serif',
+            '& .MuiSelect-select': {
+              padding: '10px 14px',
+            },
+            '& fieldset': {
+              border: 'none',
+            },
+            '&:hover': {
+              borderColor: '#888',
+            },
+          }}
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                backgroundColor: '#f8eedfff', // fondo del menú desplegable (más claro aún)
+              },
+            },
+          }}
+        >
+          <MenuItem value="todas">Todas las Reservas</MenuItem>
+          {cabanas.map((cabana) => (
+            <MenuItem key={cabana.id} value={cabana.id}>
+              {cabana.nombre}
+            </MenuItem>
+          ))}
+        </Select>
+      </Box>
+      <TableContainer
+        component={Paper}
+        sx={{
+          backgroundColor: '#fffaf2',
+          marginTop: 2,
+        }}
       >
-        Agregar Reserva
-      </Button>
-
-      <Select
-        value={filtroCabana}
-        onChange={handleFiltroCabana}
-        fullWidth
-        displayEmpty
-        margin="dense"
-      >
-        <MenuItem value="todas">Todas las Reservas</MenuItem>
-        {cabanas.map((cabana) => (
-          <MenuItem key={cabana.id} value={cabana.id}>
-            {cabana.nombre}
-          </MenuItem>
-        ))}
-      </Select>
-
-      <TableContainer component={Paper}>
-        <Table>
+        <Table sx={{ borderCollapse: 'collapse', minWidth: 800 }}>
           <TableHead>
-            <TableRow>
-              <TableCell>Cabaña</TableCell>
-              <TableCell>Cliente</TableCell>
-              <TableCell>Fecha Entrada</TableCell>
-              <TableCell>Fecha Salida</TableCell>
-              <TableCell>Cantidad Días</TableCell>
-              <TableCell>Estado</TableCell>
-              <TableCell>Observaciones</TableCell>
-              <TableCell>Cantidad Personas</TableCell>
-              <TableCell>Acciones</TableCell>
+            <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+              {[
+                'Cabaña',
+                'Cliente',
+                'Fecha Entrada',
+                'Fecha Salida',
+                'Cantidad Días',
+                'Estado',
+                'Observaciones',
+                'Cantidad Personas',
+                'Acciones',
+              ].map((titulo) => (
+                <TableCell
+                  key={titulo}
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: '1rem',
+                    color: '#ffffff',
+                    border: '1px solid #ddd',
+                  }}
+                >
+                  {titulo}
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {reservas
               .filter(
@@ -358,18 +416,25 @@ const AdminReservas = () => {
                   filtroCabana === 'todas' || reserva.cabanaId === filtroCabana,
               )
               .map((reserva) => (
-                <TableRow key={reserva.id}>
-                  <TableCell>
+                <TableRow
+                  key={reserva.id}
+                  sx={{
+                    backgroundColor: '#fffaf2',
+                    '&:hover': {
+                      backgroundColor: '#f0e6d6',
+                    },
+                  }}
+                >
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     {cabanas.find((c) => c.id === reserva.cabanaId)?.nombre ||
                       'Desconocida'}
                   </TableCell>
-                  <TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     {clientes.find(
                       (cliente) => cliente.id === reserva.clienteId,
                     )?.nombre || reserva.clienteId}
                   </TableCell>
-
-                  <TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     {reserva.fechaEntrada
                       ? reserva.fechaEntrada
                           .toDate()
@@ -377,17 +442,24 @@ const AdminReservas = () => {
                           .split('T')[0]
                       : 'N/A'}
                   </TableCell>
-                  <TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     {reserva.fechaSalida
                       ? reserva.fechaSalida.toDate().toISOString().split('T')[0]
                       : 'N/A'}
                   </TableCell>
-                  <TableCell>{reserva.cantidadDias}</TableCell>
-                  <TableCell>{getEstadoIcono(reserva.estado)}</TableCell>
-                  <TableCell>{reserva.observaciones}</TableCell>
-                  <TableCell>{reserva.cantidadPersonas}</TableCell>
-
-                  <TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {reserva.cantidadDias}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {getEstadoIcono(reserva.estado)}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {reserva.observaciones}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {reserva.cantidadPersonas}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     <IconButton
                       color="primary"
                       onClick={() => handleEditReserva(reserva)}

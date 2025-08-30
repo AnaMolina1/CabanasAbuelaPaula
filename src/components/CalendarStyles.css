@@ -1,0 +1,46 @@
+/* Fondo general del calendario */
+.fc {
+  background-color: #fdf7f2; /* mismo que el Select */
+  color: #000000; /* texto principal negro */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Días del mes */
+.fc-daygrid-day-number {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Cabecera del mes y días */
+.fc-toolbar-title,
+.fc-col-header-cell-cushion {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Fondo de los encabezados (opcional) */
+.fc-col-header {
+  background-color: #f3eae2;
+}
+
+/* Reduce el alto de cada día */
+.fc .fc-daygrid-day-frame {
+  min-height: 20px !important;
+  padding: 0px !important;
+}
+
+/* Opcional: reduce el espacio de los encabezados */
+.fc .fc-col-header-cell {
+  padding: 4px !important;
+}
+
+/* Asegura que no haya scroll vertical innecesario */
+.fc .fc-scroller {
+  overflow-y: hidden !important;
+}
+
+/* También reducimos el espaciado general interno */
+.fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}

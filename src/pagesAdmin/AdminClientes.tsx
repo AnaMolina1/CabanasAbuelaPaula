@@ -24,6 +24,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -124,47 +125,118 @@ const AdminClientes: React.FC = () => {
 
   return (
     <Container>
-      <h2>Administrar Clientes</h2>
+      <Typography
+        variant="h4"
+        align="center"
+        gutterBottom
+        sx={{
+          fontWeight: 'bold',
+          fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
+          textDecoration: 'underline',
+          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+        }}
+      >
+        Administrar Clientes
+      </Typography>
       <Button variant="contained" color="primary" onClick={() => handleOpen()}>
-        Agregar Cliente
+        + AGREGAR CLIENTE
       </Button>
 
       <TableContainer
         component={Paper}
-        sx={{ marginTop: 2, overflowX: 'auto' }}
+        sx={{
+          marginTop: 2,
+          overflowX: 'auto',
+          backgroundColor: '#fffaf2', // beige claro de fondo para toda la tabla
+        }}
       >
-        <Table sx={{ minWidth: 600 }}>
+        <Table sx={{ minWidth: 600, borderCollapse: 'collapse' }}>
           <TableHead>
-            <TableRow>
+            <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
               <TableCell
                 onClick={handleSort}
-                style={{ cursor: 'pointer', fontWeight: 'bold' }}
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  border: '1px solid #ddd',
+                  color: '#ffffff',
+                }}
               >
                 Nombre {order === 'asc' ? '▲' : '▼'}
               </TableCell>
-
-              <TableCell>Email</TableCell>
-              <TableCell>Teléfono</TableCell>
-              <TableCell>DNI</TableCell>
-              <TableCell>Acciones</TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  border: '1px solid #ddd',
+                  color: '#ffffff',
+                }}
+              >
+                Email
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  border: '1px solid #ddd',
+                  color: '#ffffff',
+                }}
+              >
+                Teléfono
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  border: '1px solid #ddd',
+                  color: '#ffffff',
+                }}
+              >
+                DNI
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  border: '1px solid #ddd',
+                  color: '#ffffff',
+                }}
+              >
+                Acciones
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {[...clientes]
               .sort((a, b) => {
-                if (order === 'asc') {
-                  return a.nombre.localeCompare(b.nombre);
-                } else {
-                  return b.nombre.localeCompare(a.nombre);
-                }
+                return order === 'asc'
+                  ? a.nombre.localeCompare(b.nombre)
+                  : b.nombre.localeCompare(a.nombre);
               })
               .map((cliente) => (
-                <TableRow key={cliente.id}>
-                  <TableCell>{cliente.nombre}</TableCell>
-                  <TableCell>{cliente.mail}</TableCell>
-                  <TableCell>{cliente.telefono}</TableCell>
-                  <TableCell>{cliente.dni}</TableCell>
-                  <TableCell>
+                <TableRow
+                  key={cliente.id}
+                  sx={{
+                    backgroundColor: '#fffaf2',
+                    '&:hover': {
+                      backgroundColor: '#f0e6d6',
+                    },
+                  }}
+                >
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cliente.nombre}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cliente.mail}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cliente.telefono}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
+                    {cliente.dni}
+                  </TableCell>
+                  <TableCell sx={{ border: '1px solid #eee' }}>
                     <IconButton
                       onClick={() => handleOpen(cliente)}
                       color="primary"

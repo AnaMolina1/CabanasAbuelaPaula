@@ -22,7 +22,7 @@ a:hover {
 
 /* Eliminamos el flex y centrado para que el contenido comience desde arriba */
 body {
-  background: linear-gradient(135deg, #f5e4a6, #f8f2e3);
+  background: linear-gradient(135deg, #a19051, #d0a33b);
   margin: 0;
   padding: 0;
   min-width: 320px;
@@ -36,7 +36,6 @@ html {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 
 h1 {
   font-size: 3.2em;
@@ -145,7 +144,9 @@ button:focus-visible {
 
 .slick-slide img {
   opacity: 0.4;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .slick-center img {
@@ -153,11 +154,8 @@ button:focus-visible {
   transform: scale(1.05);
 }
 
-
 html,
 body {
   overflow-x: hidden;
   width: 100%;
 }
-
-
