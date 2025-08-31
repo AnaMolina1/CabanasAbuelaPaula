@@ -121,7 +121,7 @@ const Home: React.FC = () => {
             justifyContent: 'center',
             padding: '2rem',
             clipPath: {
-              xs: 'none',
+              xs: 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)',
               md: 'polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%)',
             },
           }}
@@ -143,12 +143,10 @@ const Home: React.FC = () => {
         <Box
           sx={{
             width: { xs: '100%', md: '50%' },
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'center', // 🔑 centra horizontalmente dentro del Box
             padding: '2rem',
+            marginLeft: { xs: '-1.5rem', md: 0 }, // 🔑 corrección horizontal solo en mobile
           }}
         >
           <Typography
@@ -159,7 +157,9 @@ const Home: React.FC = () => {
               color: '#252525ff',
               textShadow: '0 0 5px rgba(0,0,0,0.5)',
               textAlign: 'center',
-              maxWidth: '90%',
+              width: '100%', // 🔑 ocupa todo el ancho
+              maxWidth: '600px', // 🔑 opcional: límite para no quedar demasiado ancho en desktop
+              margin: '0 auto', // 🔑 asegura que quede centrado en el padre
             }}
           >
             Descubre la magia de nuestras cabañas en Tanti, donde la
