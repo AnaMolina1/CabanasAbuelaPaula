@@ -70,6 +70,9 @@ const AdminReservas = () => {
   const [filtroCabana, setFiltroCabana] = useState<string>('todas');
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tableRef = useRef<HTMLTableElement | null>(null);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
+
 
   useEffect(() => {
     const fetchReservas = async () => {
@@ -260,15 +263,14 @@ const AdminReservas = () => {
     }
   };
 
-  const handleDeleteReserva = async (id: string) => {
-    const confirmDelete = window.confirm(
-      '¿Estás seguro de que deseas eliminar esta reserva?',
-    );
-    if (confirmDelete) {
-      await deleteDoc(doc(db, 'reserva', id));
-      setReservas(reservas.filter((reserva) => reserva.id !== id));
-    }
-  };
+ const confirmarEliminar = async () => {
+  if (reservaAEliminar?.id) {
+    await deleteDoc(doc(db, "reserva", reservaAEliminar.id));
+    setReservas((prev) => prev.filter((r) => r.id !== reservaAEliminar.id));
+  }
+  setDeleteOpen(false);
+  setReservaAEliminar(null);
+};
 
   const handleEditReserva = (reserva: Reserva) => {
     setSelectedReserva(reserva);
@@ -505,11 +507,15 @@ const AdminReservas = () => {
                         <Edit />
                       </IconButton>
                       <IconButton
-                        color="secondary"
-                        onClick={() => handleDeleteReserva(reserva.id)}
-                      >
-                        <Delete />
-                      </IconButton>
+  color="secondary"
+  onClick={() => {
+    setReservaAEliminar(reserva);
+    setDeleteOpen(true);
+  }}
+>
+  <Delete />
+</IconButton>
+
                     </TableCell>
                   </TableRow>
                 ))}
@@ -745,6 +751,33 @@ const AdminReservas = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      <Dialog open={deleteOpen} onClose={() => setDeleteOpen(false)}>
+  <DialogTitle>Eliminar Reserva</DialogTitle>
+  <DialogContent>
+    <Typography>
+      ¿Estás seguro que deseas eliminar la reserva de la cabaña{" "}
+      <strong>
+        {cabanas.find((c) => c.id === reservaAEliminar?.cabanaId)?.nombre ||
+          "Desconocida"}
+      </strong>{" "}
+      del cliente{" "}
+      <strong>
+        {clientes.find((c) => c.id === reservaAEliminar?.clienteId)?.nombre ||
+          reservaAEliminar?.clienteId}
+      </strong>
+      ?
+    </Typography>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setDeleteOpen(false)} color="secondary">
+      Cancelar
+    </Button>
+    <Button onClick={confirmarEliminar} color="error" variant="contained">
+      Eliminar
+    </Button>
+  </DialogActions>
+</Dialog>
+
     </Container>
   );
 };

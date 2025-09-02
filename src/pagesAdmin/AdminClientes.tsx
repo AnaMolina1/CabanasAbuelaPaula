@@ -25,9 +25,12 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
+  InputAdornment,
+  Box,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '@mui/icons-material/Search';
 import '../styles/TablaResponsive.css';
 
 interface Cliente {
@@ -48,8 +51,12 @@ const AdminClientes: React.FC = () => {
     telefono: 0,
   });
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
+  const [searchTerm, setSearchTerm] = useState(''); // 🔎 Estado de búsqueda
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tableRef = useRef<HTMLTableElement | null>(null);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+const [clienteAEliminar, setClienteAEliminar] = useState<Cliente | null>(null);
+
 
   // Obtener clientes de Firebase
   useEffect(() => {
@@ -79,6 +86,10 @@ const AdminClientes: React.FC = () => {
 
   // Agregar o actualizar cliente en Firebase
   const handleSave = async () => {
+    if (!clienteActual.mail.includes("@")) {
+    alert("El email debe contener @");
+    return;
+  }
     const clienteData = {
       nombre: clienteActual.nombre,
       mail: clienteActual.mail,
@@ -113,18 +124,22 @@ const AdminClientes: React.FC = () => {
     handleClose();
   };
 
-  // Eliminar cliente
-  const handleDelete = async (id: string) => {
-    const clienteRef = doc(db, 'cliente', id);
-    await deleteDoc(clienteRef);
-    setClientes((prevClientes) =>
-      prevClientes.filter((cliente) => cliente.id !== id),
-    );
-  };
-
+ 
   const handleSort = () => {
     setOrder(order === 'asc' ? 'desc' : 'asc');
   };
+
+  const confirmarEliminar = async () => {
+  if (clienteAEliminar?.id) {
+    const clienteRef = doc(db, 'cliente', clienteAEliminar.id);
+    await deleteDoc(clienteRef);
+    setClientes((prevClientes) =>
+      prevClientes.filter((c) => c.id !== clienteAEliminar.id),
+    );
+  }
+  setDeleteOpen(false);
+  setClienteAEliminar(null);
+};
 
   // (opcional) Diagnóstico: ver anchos reales
   useEffect(() => {
@@ -139,6 +154,12 @@ const AdminClientes: React.FC = () => {
       );
     }
   }, []);
+
+    // 🔎 Filtrar clientes según búsqueda
+  const filteredClientes = clientes.filter((cliente) =>
+    cliente.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    cliente.telefono.toString().includes(searchTerm)
+  );
 
   return (
     <Container>
@@ -162,9 +183,40 @@ const AdminClientes: React.FC = () => {
       >
         Administrar Clientes
       </Typography>
+
+
+      <Box
+  sx={{
+    mt: 2,
+    mb: 2,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap", // ✅ para que en pantallas chicas se apilen
+    gap: 2,
+  }}
+>
       <Button variant="contained" color="primary" onClick={() => handleOpen()}>
         + AGREGAR CLIENTE
       </Button>
+
+        {/* 🔎 Campo de búsqueda */}
+      <TextField
+        placeholder="Buscar por nombre o teléfono"
+        variant="outlined"
+        size="small"
+        sx={{ mt: 2, mb: 2, width: '100%', maxWidth: 400 }}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+      />
+      </Box>
 
       <TableContainer
         ref={containerRef}
@@ -243,7 +295,7 @@ const AdminClientes: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {[...clientes]
+              {filteredClientes
                 .sort((a, b) => {
                   return order === 'asc'
                     ? a.nombre.localeCompare(b.nombre)
@@ -279,11 +331,14 @@ const AdminClientes: React.FC = () => {
                         <EditIcon />
                       </IconButton>
                       <IconButton
-                        onClick={() => handleDelete(cliente.id as string)}
-                        color="secondary"
-                      >
-                        <DeleteIcon />
-                      </IconButton>
+  onClick={() => {
+    setClienteAEliminar(cliente); // guardamos cliente
+    setDeleteOpen(true);          // abrimos diálogo
+  }}
+  color="secondary"
+>
+  <DeleteIcon />
+</IconButton>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -307,13 +362,20 @@ const AdminClientes: React.FC = () => {
             onChange={handleChange}
           />
           <TextField
-            label="Email"
-            name="mail"
-            fullWidth
-            margin="dense"
-            value={clienteActual.mail}
-            onChange={handleChange}
-          />
+  label="Email"
+  name="mail"
+  fullWidth
+  margin="dense"
+  value={clienteActual.mail}
+  onChange={handleChange}
+  error={!!clienteActual.mail && !clienteActual.mail.includes("@")} // Marca en rojo si no hay @
+  helperText={
+    !!clienteActual.mail && !clienteActual.mail.includes("@")
+      ? "El correo debe contener @"
+      : ""
+  }
+/>
+
           <TextField
             label="Teléfono"
             name="telefono"
@@ -341,6 +403,28 @@ const AdminClientes: React.FC = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      {/* Dialog de confirmación de eliminación */}
+<Dialog open={deleteOpen} onClose={() => setDeleteOpen(false)}>
+  <DialogTitle>Eliminar Cliente</DialogTitle>
+  <DialogContent>
+    <Typography>
+      ¿Estás seguro que deseas eliminar al cliente{" "}
+      <strong>{clienteAEliminar?.nombre}</strong>?
+    </Typography>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setDeleteOpen(false)} color="secondary">
+      Cancelar
+    </Button>
+    <Button
+      onClick={confirmarEliminar}
+      color="error"
+      variant="contained"
+    >
+      Eliminar
+    </Button>
+  </DialogActions>
+</Dialog>
     </Container>
   );
 };
