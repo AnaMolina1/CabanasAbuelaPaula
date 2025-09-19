@@ -347,7 +347,9 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
           textDecoration: 'underline',
           color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
-          wordWrap: 'break-word',
+           wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
+    overflowWrap: 'break-word', // 🔹 asegura que no se desborde
+    lineHeight: 1.2,            // 🔹 para que no quede demasiado espaciado
           fontSize: {
             xs: '2.5rem', // pantallas muy chicas
             sm: '3rem', // tablets
