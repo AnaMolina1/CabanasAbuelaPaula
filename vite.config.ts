@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -9,21 +8,21 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Proyecto Cabañas',
+        name: 'Cabañas Abuela Paula',
         short_name: 'Cabañas',
         description: 'Aplicación para reservas de cabañas',
-        theme_color: '#ffffff',
+        theme_color: '#8B4513',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
         icons: [
           {
-            src: 'images/casaicono.png', // Asegúrate de que este archivo exista en public/images/
+            src: '/images/icons/icon_192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'images/casaicono.png', // Usamos el mismo icono para 512x512
+            src: '/images/icons/icon_512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
