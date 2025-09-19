@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
               }),
           }}
         >
-          <Toolbar sx={{ justifyContent: 'center' }}>
+          <Toolbar sx={{ justifyContent: 'center', minHeight: 64 }}>
             <Typography
               variant="h6"
               sx={{ fontFamily: '"Fredoka", sans-serif' }}
@@ -335,6 +335,8 @@ const Navbar: React.FC = () => {
           </Toolbar>
         </AppBar>
       )}
+      {/* 🔹 ACA VA EL SPACER: SIEMPRE después de cerrar el ternario */}
+    <Toolbar sx={{ minHeight: { xs: 64, sm: isScrolled ? 60 : 100 } }} />
     </>
   );
 };
