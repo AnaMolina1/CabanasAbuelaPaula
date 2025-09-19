@@ -177,7 +177,7 @@ const [clienteAEliminar, setClienteAEliminar] = useState<Cliente | null>(null);
     overflowWrap: 'break-word', // 🔹 asegura que no se desborde
     lineHeight: 1.2,            // 🔹 para que no quede demasiado espaciado
           fontSize: {
-            xs: '2.5rem', // pantallas muy chicas
+            xs: '2.8rem', // pantallas muy chicas
             sm: '3rem', // tablets
             md: '2.5rem', // escritorio
           },
