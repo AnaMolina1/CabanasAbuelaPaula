@@ -5,8 +5,8 @@ export interface Reserva {
   id: string;
   cabanaId: string;
   clienteId: string;
-  fechaEntrada?: Timestamp;
-  fechaSalida?: Timestamp;
+  fechaEntrada: Timestamp;
+  fechaSalida: Timestamp;
   estado: string;
   observaciones: string;
   cantidadPersonas?: number;

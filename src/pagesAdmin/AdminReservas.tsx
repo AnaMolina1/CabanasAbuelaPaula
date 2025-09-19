@@ -7,6 +7,7 @@ import {
   deleteDoc,
   doc,
   Timestamp,
+  query, orderBy
 } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 import { Reserva } from '../types/reserva'; // Importamos la interfaz correctamente
@@ -76,24 +77,25 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
 
   useEffect(() => {
     const fetchReservas = async () => {
-      const querySnapshot = await getDocs(collection(db, 'reserva'));
-      const reservasList: Reserva[] = querySnapshot.docs.map((doc) => {
-        const data = doc.data() as Omit<Reserva, 'id'>;
-        return {
-          ...data,
-          id: doc.id,
-          fechaEntrada: data.fechaEntrada
-            ? Timestamp.fromMillis(data.fechaEntrada.seconds * 1000)
-            : undefined,
-          fechaSalida: data.fechaSalida
-            ? Timestamp.fromMillis(data.fechaSalida.seconds * 1000)
-            : undefined,
-          cantidadPersonas: data.cantidadPersonas || 0,
-          cantidadDias: data.cantidadDias || 0,
-        };
-      });
-      setReservas(reservasList);
+  const reservasCollection = collection(db, 'reserva');
+  // 🔹 Ordena descendente (más recientes primero)
+  const q = query(reservasCollection, orderBy('fechaEntrada', 'desc'));
+  const snapshot = await getDocs(q);
+
+  const reservasList: Reserva[] = snapshot.docs.map((doc) => {
+    const data = doc.data() as Omit<Reserva, 'id'>;
+    return {
+      ...data,
+      id: doc.id,
+      fechaEntrada: data.fechaEntrada
+         ? Timestamp.fromMillis(data.fechaEntrada.seconds * 1000)
+  : Timestamp.fromDate(new Date()), 
+      cantidadPersonas: data.cantidadPersonas || 0,
+      cantidadDias: data.cantidadDias || 0,
     };
+  });
+  setReservas(reservasList);
+};
 
     const fetchCabanas = async () => {
       const querySnapshot = await getDocs(collection(db, 'cabanas'));
@@ -233,7 +235,13 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
       const docRef = await addDoc(collection(db, 'reserva'), newReserva);
 
       // 🔹 Actualiza la tabla inmediatamente con el nombre del cliente
-      setReservas([...reservas, { ...newReserva, id: docRef.id }]);
+      setReservas((prev) =>
+  [...prev, { ...newReserva, id: docRef.id }].sort(
+    (a, b) =>
+      new Date(b.fechaEntrada.toDate()).getTime() -
+      new Date(a.fechaEntrada.toDate()).getTime()
+  )
+);
 
       // 🔹 Llamamos a la función para verificar reservas pendientes y enviar notificación si es necesario
       verificarReservasPendientes();
