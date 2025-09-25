@@ -29,6 +29,8 @@
   font-family: var(--font-subtitle) !important;
   font-weight: bold;
   color: var(--color-crema);
+   /* tamaño fluido */
+  font-size: clamp(2.5rem, 6vw, 3rem) !important;
 }
 
 /* Ítems de Comodidades */
