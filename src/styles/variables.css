@@ -1,0 +1,14 @@
+:root {
+  /* Paleta */
+  --color-crema: #f7f3e9;    /* 60% fondo */
+   --color-crema-oscuro: #e8e0d0;
+  --color-oliva: #6b7b4e; 
+  --color-oliva-claro: #a6b58c;  
+  --color-terracota: #c26850;
+  --color-oliva-oscuro: #262f17; 
+
+  /* Tipografía */
+   --font-title: 'Cinzel Decorative', serif; /* 👑 título principal */
+  --font-subtitle: 'Cormorant Garamond', serif; /* ✨ subtítulos */
+  --font-section: 'Raleway', sans-serif; /* 🔹 títulos de secciones */
+}

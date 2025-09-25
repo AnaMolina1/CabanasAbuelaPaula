@@ -1,0 +1,15 @@
+/* Footer */
+.footer {
+  background-color: #141514;
+  color: #ffffffcc;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-family: "Fredoka", sans-serif;
+}
+
+.footer-link {
+  color: #ffffffcc;
+  text-decoration: underline;
+  margin-left: 4px;
+}

@@ -1,0 +1,98 @@
+/* Sección Nuestras Cabañas */
+.cabins-section {
+  background-color: var(--color-crema);
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+/* Título principal */
+.cabins-title {
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+  font-family: var(--font-title) !important;
+  font-weight: bold !important;
+  color: var(--color-terracota) !important;
+}
+
+/* Box de Comodidades */
+.comodidades-box {
+  background-color: var(--color-oliva-claro);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Título de Comodidades */
+.comodidades-title {
+  text-align: center;
+  margin-bottom: 2rem !important;
+  font-family: var(--font-subtitle) !important;
+  font-weight: bold;
+  color: var(--color-crema);
+}
+
+/* Ítems de Comodidades */
+.comodidad-item {
+  text-align: center;
+  color: var(--color-crema);
+  transition: transform 0.3s ease;
+}
+
+.comodidad-item:hover {
+  transform: scale(1.1);
+}
+
+/* Tarjeta de Cabaña */
+.cabin-card {
+  border-radius: 16px;
+  background-color: var(--color-crema);
+  border: 2px solid var(--color-terracota);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  height: 100%; /* 🔑 todas las tarjetas iguales */
+  display: flex;
+  flex-direction: column; /* imagen arriba, contenido abajo */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cabin-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(194,104,80,0.4);
+}
+
+/* Imagen de la tarjeta */
+.cabin-card img {
+  width: 100%;
+  height: 220px; /* 🔑 altura fija para todas */
+  object-fit: cover; /* 🔑 ajusta la foto */
+  border-bottom: 4px solid var(--color-terracota);
+}
+
+/* Contenido de la tarjeta */
+.cabin-card-content {
+  flex-grow: 1; /* 🔑 fuerza que el contenido llene el espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+.cabin-card-title {
+  font-family: var(--font-main);
+  font-weight: bold;
+  color: var(--color-terracota);
+  margin-bottom: 0.5rem;
+}
+
+.cabin-card-text {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Fondo neutro para la sección */
+.cabins-wrapper {
+  background-color: var(--color-crema); /* 👈 fondo crema del prototipo */
+  padding: 2rem 0;
+}

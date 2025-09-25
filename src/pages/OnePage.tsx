@@ -7,6 +7,11 @@ import Contacto from './Contacto';
 import Box from '@mui/material/Box';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Loader from '../components/Loader';
+import '../styles/onepage.css';
+import '../styles/contacto.css';
+import '../styles/footer.css';
+
+
 
 const OnePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +27,7 @@ const OnePage: React.FC = () => {
 
       if (loadTime > 2000) {
         console.warn(
-          '⚠️ La carga ha sido lenta, revisa Firebase, imágenes o scripts externos.',
+          '⚠️ La carga ha sido lenta, revisa Firebase, imágenes o scripts externos.'
         );
       }
     }, 2000);
@@ -31,116 +36,47 @@ const OnePage: React.FC = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        backgroundImage: 'url(/images/parallax1.jpg)',
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        // minHeight: '100vh',
-        width: '100%',
-      }}
-    >
+    <Box sx={{ backgroundColor: 'var(--color-crema)', width: '100%' }}>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <section
-            id="inicio"
-            style={{
-              padding: '2rem 0',
-              backgroundColor: 'rgba(255,255,255,0.5)', // fondo semitransparente
-            }}
-          >
+          {/* Hero */}
+          <section id="inicio" className="section-light">
             <Home />
           </section>
 
-          <Box
-            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
-          />
-
-          <Box
-            id="galeria"
-            component="section"
-            sx={{
-              padding: '0rem 0',
-              //backgroundColor: '#eeaf42ff',
-              //backgroundColor: '#2b440aff',
-              //backgroundImage:
-              //'linear-gradient(to bottom, #304713ff, #5b7542ff)',
-              backgroundImage:
-                'linear-gradient(to bottom, #de9312ff, #f2ecc8ff)',
-            }}
-          >
+          {/* Galería */}
+          <section id="galeria" className="section-dark">
             <Galeria />
-          </Box>
+          </section>
 
-          <Box
-            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
-          />
-
-          <section
-            id="cabañas"
-            style={{
-              padding: '0rem 0',
-              //backgroundColor: '#f6f0a2f0',
-              backgroundImage:
-                'linear-gradient(to bottom, #b36422ff, rgba(189, 109, 43, 1))',
-            }}
-          >
+          {/* Nuestras Cabañas */}
+          <section id="cabañas" className="section-light">
             <Cabañas />
           </section>
 
-          <Box
-            sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', width: '100%' }}
-          />
-
-          <section
-            id="ubicacion"
-            style={{
-              padding: '2rem 0',
-              backgroundColor: 'rgba(255,255,255,0.5)',
-            }}
-          >
+          {/* Ubicación */}
+          <section id="ubicacion" className="section-dark">
             <Ubicacion />
           </section>
 
-          <section
-            id="contacto"
-            style={{
-              padding: '2rem 0 0 0',
-              justifyContent: 'space-between', // para mantener todo centrado pero pegado abajo
-              backgroundColor: '#222a1eff',
-            }}
-          >
-            <Contacto />
-            {/* Footer simple al final de Contacto */}
-            <Box
-              component="footer"
-              sx={{
-                backgroundColor: '#141514ff',
-                color: '#ffffffcc',
-                textAlign: 'center',
-                py: 2,
-                px: 1,
-                fontSize: '0.9rem',
-                fontFamily: '"Fredoka", sans-serif',
-              }}
-            >
-              © Cabañas Abuela Paula, 2025.{' '}
-              <a
-                href="/privacidad"
-                style={{
-                  color: '#ffffffcc',
-                  textDecoration: 'underline',
-                  marginLeft: '4px',
-                }}
-              >
-                Política de privacidad
-              </a>
-            </Box>
-          </section>
+          {/* Contacto + Footer */}
+        {/* Contacto */}
+<section id="contacto" className="contacto-wrapper">
+  <Box className="contacto-box">
+    <Contacto />
+  </Box>
+</section>
 
+{/* Footer */}
+<Box component="footer" className="footer">
+  © Cabañas Abuela Paula, 2025.{' '}
+  <a href="/privacidad" className="footer-link">
+    Política de privacidad
+  </a>
+</Box>
+          {/* WhatsApp flotante */}
           <WhatsAppButton />
         </>
       )}

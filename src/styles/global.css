@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background-color: var(--color-crema);
+  color: #213547;
+  overflow-x: hidden;
+}
+
+/* Links */
+a {
+  color: var(--color-oliva);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-terracota);
+}
+
+/* Botones */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background-color: var(--color-terracota);
+  color: white;
+}
+button:hover {
+  background-color: #a54f3f; /* terracota más oscuro */
+}
+
+/* Aplica a todos los MenuIcon de MUI */
+.MuiSvgIcon-root[data-testid="MenuIcon"] {
+  color: #a06c6c !important;          /* ícono terracota */
+}
+
+/* Si también querés que todos tengan círculo crema */
+.MuiSvgIcon-root[data-testid="MenuIcon"] {
+  color: #a06c6c !important;          /* color del ícono */
+  background-color: #e8e0d0 !important; /* fondo crema */
+  border: 1px solid #957777ff !important; /* borde marrón grisáceo */
+  border-radius: 50% !important;      /* círculo */
+  padding: 6px;                       /* espacio interno */
+  box-sizing: content-box;
+}

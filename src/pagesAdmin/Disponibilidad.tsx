@@ -94,7 +94,7 @@ const Disponibilidad: React.FC = () => {
           fontWeight: 'bold',
           fontFamily: 'Poppins, sans-serif',
           textDecoration: 'underline',
-          color: '#ffede9ff',
+          color: '#4c473aff',
           marginTop: '-45px',
         }}
       >

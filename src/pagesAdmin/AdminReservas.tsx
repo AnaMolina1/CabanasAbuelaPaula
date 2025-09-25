@@ -345,13 +345,13 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
           fontWeight: 'bold',
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
-          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+          color: '#4c473aff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
            wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
     overflowWrap: 'break-word', // 🔹 asegura que no se desborde
     lineHeight: 1.2,            // 🔹 para que no quede demasiado espaciado
           fontSize: {
-            xs: '2.5rem', // pantallas muy chicas
+            xs: '2.8rem', // pantallas muy chicas
             sm: '3rem', // tablets
             md: '2.5rem', // escritorio
           },
@@ -428,7 +428,7 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
         >
           <Table ref={tableRef} sx={{ minWidth: 800 }}>
             <TableHead>
-              <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+              <TableRow sx={{ backgroundColor: '#3a422cff' }}>
                 {[
                   'Cabaña',
                   'Cliente',
@@ -447,6 +447,12 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
                       fontSize: '1rem',
                       color: '#ffffff',
                       border: '1px solid #ddd',
+                      ...(titulo === 'Acciones' && {
+        minWidth: 150,       // ancho mínimo para aire
+        width: 160,          // ancho fijo opcional
+        textAlign: 'left',   // 👈 alinea el título a la izquierda
+  paddingLeft: '30px',
+      }),
                     }}
                   >
                     {titulo}
@@ -509,7 +515,11 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
                     <TableCell sx={{ border: '1px solid #eee' }}>
                       {reserva.cantidadPersonas}
                     </TableCell>
-                    <TableCell sx={{ border: '1px solid #eee' }}>
+                    <TableCell sx={{ border: '1px solid #eee',
+    minWidth: 150,
+    width: 160,
+    textAlign: 'left',
+  paddingLeft: '12px', }}>
                       <IconButton
                         color="primary"
                         onClick={() => handleEditReserva(reserva)}

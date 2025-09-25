@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#862e10', // evitá 8 dígitos (#RRGGBBAA) por compatibilidad
+            backgroundColor: '#C26850',
             left: 0,
             right: drawerOpen ? `${drawerWidth}px` : 0, // 👈 el AppBar termina antes del Drawer
             transition: (theme) =>
@@ -109,17 +109,17 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#862e10ff',
+            backgroundColor: '#C26850',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
           }}
         >
           <Toolbar
-            sx={{
-              height: { xs: '64px', sm: isScrolled ? '60px' : '100px' },
-              transition: 'height 0.3s ease',
-              minHeight: { xs: '64px', sm: 'auto' },
-            }}
-          >
+  sx={{
+    minHeight: 'auto',
+    height: { xs: '64px', sm: '70px' },
+    backgroundColor: 'transparent',
+  }}
+>
             {isMobile ? (
               // 📱 PÚBLICO MOBILE
               <>
@@ -148,20 +148,22 @@ const Navbar: React.FC = () => {
                       sx={{ height: 55, ml: 2 }}
                     />
                   </Box>
-                  <IconButton
-                    edge="end"
-                    aria-label="menu"
-                    onClick={handleDrawerToggle}
-                    sx={{
-                      backgroundColor: '#dba1a1ff',
-                      border: '1px solid #a06c6c',
-                      borderRadius: '50%',
-                      p: '8px',
-                      '&:hover': { backgroundColor: '#836262ff' },
-                    }}
-                  >
-                    <MenuIcon sx={{ color: '#a06c6c' }} />
-                  </IconButton>
+                 <IconButton
+  edge="end"
+  aria-label="menu"
+  onClick={handleDrawerToggle}
+  sx={{
+    backgroundColor: '#e8e0d0',
+    borderRadius: '50%',
+    p: '6px',                 // 👈 más chico que 8px
+    width: '40px',            // 👈 tamaño fijo opcional
+    height: '40px',
+    '&:hover': { backgroundColor: '#836262ff' },
+  }}
+>
+  <MenuIcon sx={{ color: '#a06c6c', fontSize: '1.5rem' }} />
+</IconButton>
+
                 </Box>
                 {/* Drawer lateral para mobile */}
                 <Drawer
@@ -259,7 +261,7 @@ const Navbar: React.FC = () => {
                   sx={{
                     fontFamily: '"Fredoka", sans-serif',
                     fontWeight: 'normal',
-                    fontSize: isScrolled ? '3.3rem' : '3.5rem',
+                    fontSize: isScrolled ? '2.5rem' : '2rem',
                   }}
                 >
                   Panel Administrador
@@ -295,18 +297,18 @@ const Navbar: React.FC = () => {
                           fontSize: '1.1rem',
                           textTransform: 'uppercase',
                           color:
-                            activeSection === item.id ? '#E38834' : '#FFFFFF',
+                            activeSection === item.id ? '#262f17' : '#e8e0d0',
                           borderBottom:
                             activeSection === item.id
-                              ? '2px solid #E38834'
+                              ? '2px solid #262f17'
                               : '2px solid transparent',
                           borderRadius: 0,
                           mx: 1.5,
                           paddingBottom: '4px',
                           transition: 'all 0.3s ease',
                           '&:hover': {
-                            color: '#E38834',
-                            borderBottom: '2px solid #E38834',
+                            color: '#262f17',
+                            borderBottom: '2px solid #262f17',
                           },
                         }}
                       >
@@ -336,7 +338,10 @@ const Navbar: React.FC = () => {
         </AppBar>
       )}
       {/* 🔹 ACA VA EL SPACER: SIEMPRE después de cerrar el ternario */}
-    <Toolbar sx={{ minHeight: { xs: 64, sm: isScrolled ? 60 : 100 } }} />
+    {/* 🔹 Espaciador solo en admin */}
+{isAdminRoute && (
+  <Toolbar sx={{ minHeight: { xs: 64, sm: isScrolled ? 60 : 100 } }} />
+)}
     </>
   );
 };

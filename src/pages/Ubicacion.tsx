@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { GoogleMap, Marker } from '@react-google-maps/api';
+import '../styles/ubicacion.css';
 
 const containerStyle = {
   width: '100%',
@@ -31,22 +32,16 @@ const Ubicacion: React.FC = () => {
   };
 
   return (
-    <Container maxWidth={false} sx={{ marginTop: 0, padding: '1rem' }}>
-      <Typography
-        variant="h3"
-        sx={{
-          textAlign: 'center',
-          mb: 4,
-          fontFamily: '"Cinzel", serif',
-          fontWeight: 'bold',
-          color: '#ffffffff',
-        }}
-      >
-        Ubicación
+    <Container maxWidth="lg" className="ubicacion-section">
+      {/* Título */}
+      <Typography variant="h3" className="ubicacion-title">
+        Dónde estamos
       </Typography>
 
-      {/* 🔵 Mapa + Botón flotante */}
-      <Box sx={{ position: 'relative', marginTop: '2rem' }}>
+      <Box className="map-container">
+        
+
+        {/* Mapa */}
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={tantiCenter}
@@ -59,28 +54,9 @@ const Ubicacion: React.FC = () => {
           {mapLoaded && <Marker position={tantiCenter} />}
         </GoogleMap>
 
-        <Button
-          onClick={handleOpenInMaps}
-          sx={{
-            position: 'absolute',
-            bottom: 16,
-            right: 16,
-            background: 'linear-gradient(135deg, #2196F3, #21CBF3)',
-            color: 'white',
-            fontWeight: 500,
-            fontFamily: '"Fredoka", sans-serif',
-            paddingX: 2,
-            paddingY: 1,
-            borderRadius: '8px',
-            boxShadow: '0px 4px 12px rgba(0,0,0,0.2)',
-            transition: 'transform 0.2s ease-in-out',
-            '&:hover': {
-              transform: 'scale(1.05)',
-              background: 'linear-gradient(135deg, #1E88E5, #00BCD4)',
-            },
-          }}
-        >
-          Abrir en Google Maps
+        {/* Botón Cómo llegar */}
+        <Button onClick={handleOpenInMaps} className="ubicacion-btn">
+          Cómo llegar
         </Button>
       </Box>
     </Container>

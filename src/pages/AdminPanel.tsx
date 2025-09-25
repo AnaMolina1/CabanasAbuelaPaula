@@ -51,37 +51,34 @@ const pendientesCount = reservas.filter(
     <Container
       maxWidth="sm"
       sx={{
-        //marginTop: isMobile ? '4rem' : '6rem', // un poco más arriba
+        marginTop: isMobile ? '1rem' : '0rem', // un poco más arriba
         padding: isMobile ? '0.5rem' : '1rem',
       }}
     >
-      {/* 🔴 Cartel principal */}
+     
      {/* 📌 Cartel principal */}
 <Paper
   sx={{
     padding: { xs: '1.5rem', md: '3rem' }, // 🔹 más padding en desktop
-    backgroundColor: '#df977fff',
-    color: '#fff',
-    borderRadius: '16px',
+    backgroundColor: '#aba38dff',
+    color: '#14180eff',
+    //borderRadius: '16px',
     boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
     mb: 3,
     textAlign: 'center', // 🔹 centra todo el texto
   }}
 >
-  <Typography
-    variant={isMobile ? 'h5' : 'h4'} // 🔹 más grande en escritorio
-    gutterBottom
-    sx={{ fontWeight: 700, fontFamily: '"Fredoka", sans-serif' }}
-  >
-    Panel de Administración
-  </Typography>
+ 
 
   <Typography
-    variant={isMobile ? 'body1' : 'h6'} // 🔹 texto más grande en desktop
-    sx={{ display: 'block' }}
-  >
-    Aquí puedes gestionar los clientes, reservas y cabañas.
-  </Typography>
+  variant={isMobile ? 'body1' : 'h4'}
+  sx={{
+    display: 'block',
+    fontSize: { xs: '1.8rem', sm: '1rem', md: '2rem' }, 
+  }}
+>
+  Aquí puedes gestionar los clientes, reservas y cabañas.
+</Typography>
 </Paper>
 
 

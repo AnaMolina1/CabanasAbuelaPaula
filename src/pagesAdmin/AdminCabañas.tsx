@@ -146,7 +146,7 @@ const AdminCabanas = () => {
           fontWeight: 'bold',
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
-          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+          color: '#4c473aff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
           wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
     overflowWrap: 'break-word', // 🔹 asegura que no se desborde
@@ -181,7 +181,7 @@ const AdminCabanas = () => {
         >
           <Table ref={tableRef} sx={{ minWidth: 800 }}>
             <TableHead>
-              <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+              <TableRow sx={{ backgroundColor: '#3a422cff' }}>
                 {[
                   'Nombre',
                   'Capacidad',
@@ -196,6 +196,11 @@ const AdminCabanas = () => {
                       fontSize: '1rem',
                       color: '#ffffff', // Texto blanco
                       border: '1px solid #ddd',
+                      ...(titulo === 'Acciones' && {
+        minWidth: 120,       // 👈 ancho mínimo
+        width: 140,          // 👈 ancho fijo opcional
+        textAlign: 'center', // 👈 centra el contenido
+      }),
                     }}
                   >
                     {titulo}
@@ -226,7 +231,11 @@ const AdminCabanas = () => {
                   <TableCell sx={{ border: '1px solid #eee' }}>
                     {cabana.descripcion}
                   </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee' }}>
+                  <TableCell sx={{ border: '1px solid #eee',
+    minWidth: 120,       // 👈 mismo ancho mínimo
+    width: 140,          // 👈 mismo ancho fijo
+    textAlign: 'center', // 👈 centra los iconos
+     }}>
                     <IconButton
                       color="primary"
                       onClick={() => handleEditCabana(cabana)}

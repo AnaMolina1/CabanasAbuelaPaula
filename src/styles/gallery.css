@@ -1,0 +1,70 @@
+/* Contenedor de cada ítem */
+.gallery-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Estado base: se aplica a TODOS los slides (costados por defecto) */
+.slick-slide .gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  opacity: 0.5;              /* opacas */
+  transform: scale(0.8);     /* más chiquitas */
+  transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  filter: grayscale(20%) brightness(0.8) sepia(10%) hue-rotate(30deg) saturate(70%); /* tinte oliva suave */
+}
+
+/* Slide central ACTIVO: nítido, grande, sin filtros */
+.slick-center .gallery-item img {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: none;
+  z-index: 2;
+}
+
+/* Hover SOLO para el slide central (mejora leve de brillo/escala) */
+.slick-center .gallery-item:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.05);
+}
+
+/* Importantísimo: si NO es el centro, el hover NO cambia nada */
+.slick-slide:not(.slick-center) .gallery-item:hover img {
+  opacity: 0.5;
+  transform: scale(0.8);
+  filter: grayscale(20%) brightness(0.8) sepia(10%) hue-rotate(30deg) saturate(70%);
+}
+
+/* Si ya no usás overlay/lupa */
+.gallery-overlay { display: none; }
+
+
+
+/* Forzar galería negra */
+#galeria {
+ background-color: var(--color-crema-oscuro) !important;
+  padding: 0 1rem 0 1rem; /* 👈 sin espacio abajo */
+}
+
+/* si el Container de MUI mete espacio extra */
+#galeria .MuiContainer-root {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#galeria h2,
+.galeria-title {
+  text-align: center;
+  margin-bottom: 1rem;      /* equivale a mb: 4 */
+  font-family: var(--font-title);
+  font-weight: bold;
+  color: var(--color-terracota);
+}
+
+/* si el carrusel o las imágenes dejan hueco */
+#galeria img {
+  display: block;        /* quita espacio inline */
+  margin-bottom: 0 !important;
+}

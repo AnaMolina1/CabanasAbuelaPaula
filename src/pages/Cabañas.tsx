@@ -24,6 +24,8 @@ import {
   Bed as BedIcon,
   DryCleaning as DryCleaningIcon,
 } from '@mui/icons-material';
+import '../styles/cabins.css';
+
 
 interface Cabin {
   id: string;
@@ -70,69 +72,25 @@ const Cabañas: React.FC = () => {
   }, []);
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        marginTop: 0,
-        padding: '1rem',
-
-        //backgroundColor: 'transparent', // fuerza transparencia
-      }}
-    >
-      <Typography
-        variant="h2"
-        sx={{
-          textAlign: 'center',
-          mb: 4,
-          fontFamily: '"Cinzel", serif',
-          fontWeight: 'bold',
-          color: '#ffffffff',
-        }}
-      >
+    <Container maxWidth="lg" className="cabins-section">
+      {/* Título principal */}
+      <Typography variant="h2" className="cabins-title">
         Nuestras Cabañas
       </Typography>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: 'center',
-          mt: 5,
-          mb: 3,
-          fontFamily: '"Cinzel", serif',
-          fontWeight: 'bold',
-          color: '#fbf6eaff',
-        }}
-      >
-        Comodidades
-      </Typography>
 
-      {/* Sección de Comodidades */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          gap: 2,
-          mb: 7,
-          mt: 2,
-          color: '#fbf6eaff',
-        }}
-      >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
-          style={{
+      {/* Sección Comodidades */}
+      <Box className="comodidades-box">
+        <Typography variant="h3" className="comodidades-title"
+          >
+          Comodidades
+        </Typography>
+
+        <Box
+          sx={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '16px',
             justifyContent: 'center',
+            gap: 3,
           }}
         >
           {[
@@ -154,45 +112,29 @@ const Cabañas: React.FC = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
+              className="comodidad-item"
               variants={{
-                hidden: {
-                  opacity: 0,
-                  y: Math.random() * 100 - 50,
-                  x: Math.random() * 100 - 50,
-                },
+                hidden: { opacity: 0, y: 40 },
                 visible: {
                   opacity: 1,
                   y: 0,
-                  x: 0,
-                  transition: { duration: 0.8 },
+                  transition: { duration: 0.6, ease: 'easeOut' },
                 },
               }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
             >
-              <Box sx={{ textAlign: 'center' }}>
-                {item.icon}
-                <Typography variant="body2">{item.label}</Typography>
-              </Box>
+              <Box>{item.icon}</Box>
+              <Typography variant="body2">{item.label}</Typography>
             </motion.div>
           ))}
-        </motion.div>
+        </Box>
       </Box>
 
+      {/* Tarjetas de Cabañas */}
       {loading ? (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="100vh"
-          width="100%"
-          sx={{
-            background:
-              'linear-gradient(135deg,rgb(238, 244, 131),rgb(246, 229, 185)) !important',
-            backgroundColor: 'transparent !important',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
           <CircularProgress />
         </Box>
       ) : (
@@ -200,52 +142,28 @@ const Cabañas: React.FC = () => {
           {cabins.map((cabin, index) => (
             <Grid item xs={12} sm={6} md={4} key={cabin.id}>
               <motion.div
-                whileHover={{ scale: 1.05 }} // Efecto de elevación al pasar el mouse
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card
-                  sx={{
-                    borderRadius: '20px',
-                    backgroundColor: '#eddcccff',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                    backdropFilter: 'blur(6px)', // Efecto elegante
-
-                    textAlign: 'center',
-                    paddingBottom: '10px',
-                    height: '100%',
-                  }}
-                >
+                <Card className="cabin-card">
                   <CardMedia
                     component="img"
                     height="200"
                     image={imagenes[index] || '/images/default.jpg'}
                     alt={cabin.nombre}
-                    sx={{
-                      borderTopLeftRadius: '20px', // Bordes redondeados en la imagen
-                      borderTopRightRadius: '20px',
-                    }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant="h6"
-                      gutterBottom
-                      sx={{
-                        fontFamily: '"Poppins", sans-serif',
-                        fontWeight: 'bold',
-                        textAlign: 'center', // Centra el título
-                      }}
-                    >
+                  <CardContent className="cabin-card-content">
+                    <Typography variant="h6" className="cabin-card-title">
                       {cabin.nombre}
                     </Typography>
-
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" className="cabin-card-text">
                       <strong>Capacidad:</strong> {cabin.capacidad} personas
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" className="cabin-card-text">
                       <strong>Ubicación:</strong> {cabin.ubicacion}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#333333' }}>
+                    <Typography variant="body2" className="cabin-card-text">
                       {cabin.descripcion}
                     </Typography>
                   </CardContent>

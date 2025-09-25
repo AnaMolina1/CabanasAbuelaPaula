@@ -33,7 +33,7 @@ const AppContent: React.FC = () => {
     width: '100%',
     minHeight: '100vh',
     pt: '64px',
-    background: 'linear-gradient(135deg,rgba(105, 58, 29, 0.71), #f8f2e3) !important', // #f5e4a6  #f8f2e3
+    background: 'linear-gradient(135deg, #c4ae8aff, #e8e0d0) !important', 
    backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

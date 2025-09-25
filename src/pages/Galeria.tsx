@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Slider from 'react-slick';
 import Box from '@mui/material/Box';
-import { motion } from 'framer-motion'; // ✅ importamos framer-motion
+import { motion } from 'framer-motion';
 
 // Importa los estilos de slick-carousel
 import 'slick-carousel/slick/slick.css';
@@ -11,6 +11,9 @@ import 'slick-carousel/slick/slick-theme.css';
 
 // Importa los custom arrows
 import { PrevArrow, NextArrow } from '../components/CustomArrow';
+
+// Importa estilos de galería
+import '../styles/gallery.css';
 
 const imagenes = [
   '/images/imagen1.jpg',
@@ -49,48 +52,39 @@ const Galeria: React.FC = () => {
   };
 
   return (
-    <Container
-      maxWidth={false}
-      sx={{ marginTop: 0, paddingX: '1rem', paddingBottom: 0 }}
+    <Box
+      id="galeria"
+      component="section"
+      sx={{
+        backgroundColor: 'var(--color-crema)',
+        py: 6,
+      }}
     >
-      <Typography
-        variant="h2"
-        sx={{
-          textAlign: 'center',
-          mb: 4,
-          fontFamily: '"Cinzel", serif',
-          fontWeight: 'bold',
-          color: '#FFFFFF',
-        }}
-      >
-        Galería
-      </Typography>
+      <Container maxWidth="lg">
+       <Typography variant="h2" className="galeria-title">
+  Galería
+</Typography>
 
-      <Box sx={{ mb: 0, pb: 0 }}>
+
         <Slider {...settings}>
           {imagenes.map((src, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }} // cuando aún no se ve
-              whileInView={{ opacity: 1, scale: 1 }} // cuando entra en vista
-              viewport={{ once: true, amount: 0.3 }} // dispara solo una vez
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="gallery-item"
             >
-              <img
-                src={src}
-                alt={`Cabaña ${index + 1}`}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '8px', // opcional, bordes redondeados
-                  boxShadow: '0 4px 10px rgba(0,0,0,0.2)', // opcional, sombra
-                }}
-              />
+              <img src={src} alt={`Cabaña ${index + 1}`} />
+              <div className="gallery-overlay">
+                🔍
+              </div>
             </motion.div>
           ))}
         </Slider>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

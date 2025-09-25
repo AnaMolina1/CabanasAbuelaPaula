@@ -1,0 +1,146 @@
+/* Hero Section */
+#hero {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+    overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  #hero {
+    height: 60vh;
+    width: 100%;
+  }
+}
+
+/* contenedor del título */
+.hero-title-container { text-align: center; }
+
+/* estilos reales para que no quede vacía */
+.hero-title {
+  font-family: var(--font-title) !important;
+  color: var(--color-oliva-oscuro) !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  line-height: 1.2 !important;
+
+  /* centrado */
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 90%;
+
+  /* escalado fluido */
+  font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+
+  /* cortes seguros */
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(247, 243, 233, 0.2);
+
+ display: flex;
+ justify-content: flex-start;  /* 👈 NO lo centres vertical */
+  align-items: center;          /* 👈 centra horizontalmente */
+  flex-direction: column;       /* apila en columna */
+  padding-top: 1rem;            /* separa un poquito del borde */
+}
+
+/* Sección Sobre Abuela Paula */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .about-section { flex-direction: row; }
+}
+
+.about-left {
+   width: 80%; /* en lugar de 100% */
+    margin: 0 auto; /* lo centra */
+  background-color: #a6b58c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 150px; /* 👈 asegura espacio en mobile */
+clip-path: polygon(
+  0 0,      /* arriba izquierda */
+  100% 0,   /* arriba derecha (⬅️ este es el que tenías mal) */
+  100% 85%, /* derecha abajo */
+  50% 100%, /* pico centrado abajo */
+  0 85%     /* izquierda abajo */
+);
+}
+
+@media (min-width: 900px) {
+  .about-left {
+    width: 50%;
+    min-height: auto; /* opcional, lo libera en desktop */
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
+  }
+}
+
+.about-title {
+  font-family: var(--font-subtitle); /* 👈 definida en :root */
+  color: var(--color-oliva);
+  text-align: center;
+  font-weight: 400;         /* 👈 más liviano que el título */
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+}
+ 
+  
+
+.about-right {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-left: -1.5rem;
+}
+
+@media (min-width: 900px) {
+  .about-right {
+    width: 50%;
+    margin-left: 0;
+  }
+}
+
+.about-text {
+  font-family: "Raleway";
+  font-weight: 500;
+  color: var(--color-oliva-oscuro);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+   font-size: 1.3rem !important; /* 👈 tamaño equivalente a h4 */
+  line-height: 1.6;  /* 👈 mejora legibilidad */
+}
+
+/* 👇 solo para pantallas grandes (web) */
+@media (min-width: 900px) {
+  .about-text {
+    margin-top: 2rem !important; /* ajustá este valor según necesites */
+  }
+}

@@ -171,7 +171,7 @@ const [clienteAEliminar, setClienteAEliminar] = useState<Cliente | null>(null);
           fontWeight: 'bold',
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
-          color: '#ffede9ff', // opcional: un marrón para acompañar tu fondo
+          color: '#4c473aff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
            wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
     overflowWrap: 'break-word', // 🔹 asegura que no se desborde
@@ -241,7 +241,7 @@ const [clienteAEliminar, setClienteAEliminar] = useState<Cliente | null>(null);
           <Table ref={tableRef} sx={{ minWidth: 800 }}>
             {/* ...TableHead / TableBody igual que ya tenés */}
             <TableHead>
-              <TableRow sx={{ backgroundColor: '#47b0cdff' }}>
+              <TableRow sx={{ backgroundColor: '#3a422cff' }}>
                 <TableCell
                   onClick={handleSort}
                   sx={{

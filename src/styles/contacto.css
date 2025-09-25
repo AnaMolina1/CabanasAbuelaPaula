@@ -1,0 +1,49 @@
+.contacto-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 👈 pegado arriba */
+  background-color: transparent;
+  padding: 2rem 0; /* 👈 menos alto */
+}
+
+.contacto-box {
+  width: 100%;                /* un poco más compacto */     
+  max-width: none;  /* 👈 quita la limitación */
+  background-color: #bcc7ac; /* verde oliva claro */
+  padding: 0 1rem 1.5rem 1.5rem;
+  color: var(--color-crema);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Título */
+.contacto-title {
+  font-family: var(--font-title);
+  color: var(--color-terracota) !important;
+  font-weight: bold !important;
+  margin-bottom: 2rem !important;  /* 👈 más cerca del contenido */
+  margin-top: 0 !important;     /* 👈 cerca del borde superior */
+  text-align: center;
+}
+
+/* Items (dirección, whatsapp, insta) */
+.contacto-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-oliva-oscuro);
+}
+
+.contacto-icon {
+  margin-right: 0.5rem;
+  color: var(--color-oliva-oscuro);
+}
+
+.contacto-link {
+  color: var(--color-oliva-oscuro) !important;
+  text-decoration: underline;
+}
+.contacto-link:hover {
+  color: var(--color-oliva-oscuro) !important;
+}
