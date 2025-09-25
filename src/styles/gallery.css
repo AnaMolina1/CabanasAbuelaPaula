@@ -37,6 +37,21 @@
   filter: grayscale(20%) brightness(0.8) sepia(10%) hue-rotate(30deg) saturate(70%);
 }
 
+/* flechas por defecto */
+.slick-prev, .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+/* en mobile */
+@media (max-width: 600px) {
+  .slick-prev, .slick-next {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 /* Si ya no usás overlay/lupa */
 .gallery-overlay { display: none; }
 

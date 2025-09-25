@@ -45,7 +45,7 @@ const Galeria: React.FC = () => {
         settings: {
           slidesToShow: 1,
           centerMode: true,
-          arrows: false,
+          arrows: true,
         },
       },
     ],
