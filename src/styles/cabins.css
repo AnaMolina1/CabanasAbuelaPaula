@@ -82,8 +82,8 @@
 
 
 .cabin-card-title {
-  font-family: var(--font-main);
-  font-weight: bold;
+  font-family: var(--font-title) !important;
+  font-weight: bold !important;
   color: var(--color-terracota);
   margin-bottom: 0.5rem;
 }

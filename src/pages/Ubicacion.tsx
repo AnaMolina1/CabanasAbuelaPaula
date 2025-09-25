@@ -34,7 +34,7 @@ const Ubicacion: React.FC = () => {
   return (
     <Container maxWidth="lg" className="ubicacion-section">
       {/* Título */}
-      <Typography variant="h3" className="ubicacion-title">
+      <Typography variant="h2" className="ubicacion-title">
         Dónde estamos
       </Typography>
 
