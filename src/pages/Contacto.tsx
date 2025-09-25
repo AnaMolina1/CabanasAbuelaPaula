@@ -15,7 +15,7 @@ const Contacto: React.FC = () => {
     <section className="contacto-wrapper">
       <Box className="contacto-box">
        
-          <Typography variant="h3" className="contacto-title">
+          <Typography variant="h2" className="contacto-title">
             Contacto
           </Typography>
 
@@ -23,7 +23,7 @@ const Contacto: React.FC = () => {
             {/* Dirección */}
             <Grid item xs={12} sm={12} className="contacto-item">
               <LocationOnIcon className="contacto-icon" />
-              <Typography variant="body1">
+              <Typography variant="h6">
                 Dirección: Calle 123, Tanti, Córdoba, Argentina
               </Typography>
             </Grid>
@@ -31,7 +31,7 @@ const Contacto: React.FC = () => {
             {/* WhatsApp */}
             <Grid item xs={12} sm={12} className="contacto-item">
               <WhatsAppIcon className="contacto-icon" />
-              <Typography variant="body1">
+              <Typography variant="h6">
                 WhatsApp:{' '}
                 <Link
                   href="https://wa.me/541234567890"
@@ -45,7 +45,7 @@ const Contacto: React.FC = () => {
             {/* Instagram */}
             <Grid item xs={12} sm={12} className="contacto-item">
               <InstagramIcon className="contacto-icon" />
-              <Typography variant="body1">
+              <Typography variant="h6">
                 Instagram:{' '}
                 <Link
                   href="https://www.instagram.com/abuelapaulatanti/?hl=es-la"

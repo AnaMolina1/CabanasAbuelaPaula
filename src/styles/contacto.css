@@ -18,7 +18,7 @@
 
 /* Título */
 .contacto-title {
-  font-family: var(--font-title);
+  font-family: var(--font-title) !important;
   color: var(--color-terracota) !important;
   font-weight: bold !important;
   margin-bottom: 2rem !important;  /* 👈 más cerca del contenido */
