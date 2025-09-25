@@ -9,7 +9,7 @@
 .contacto-box {
   width: 100%;                /* un poco más compacto */     
   max-width: none;  /* 👈 quita la limitación */
-  background-color: #bcc7ac; /* verde oliva claro */
+  background-color: #bcc7ac; /* #b6c1averde oliva claro */
   padding: 0 1rem 1.5rem 1.5rem;
   color: var(--color-crema);
   overflow: hidden;

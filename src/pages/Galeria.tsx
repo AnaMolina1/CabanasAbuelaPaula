@@ -61,7 +61,7 @@ const Galeria: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-       <Typography variant="h2" className="galeria-title">
+       <Typography variant="h3" className="galeria-title">
   Galería
 </Typography>
 

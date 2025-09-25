@@ -74,13 +74,13 @@ const Cabañas: React.FC = () => {
   return (
     <Container maxWidth="lg" className="cabins-section">
       {/* Título principal */}
-      <Typography variant="h2" className="cabins-title">
+      <Typography variant="h3" className="cabins-title">
         Nuestras Cabañas
       </Typography>
 
       {/* Sección Comodidades */}
       <Box className="comodidades-box">
-        <Typography variant="h3" className="comodidades-title"
+        <Typography variant="h4" className="comodidades-title"
           >
           Comodidades
         </Typography>

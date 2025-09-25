@@ -15,7 +15,7 @@ const Contacto: React.FC = () => {
     <section className="contacto-wrapper">
       <Box className="contacto-box">
        
-          <Typography variant="h2" className="contacto-title">
+          <Typography variant="h3" className="contacto-title">
             Contacto
           </Typography>
 

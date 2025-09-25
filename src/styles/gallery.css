@@ -73,9 +73,9 @@
 .galeria-title {
   text-align: center;
   margin-bottom: 1rem;      /* equivale a mb: 4 */
-  font-family: var(--font-title);
-  font-weight: bold;
-  color: var(--color-terracota);
+  font-family: var(--font-title) !important;
+  font-weight: bold !important;
+  color: var(--color-terracota) !important;
 }
 
 /* si el carrusel o las imágenes dejan hueco */

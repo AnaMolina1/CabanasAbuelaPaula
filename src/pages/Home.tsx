@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       <Box id="hero">
   <div className="hero-overlay">
     <Typography variant="h2" className="hero-title">
-      Cabañas Abuela Paula
+     Abuela Paula  Cabañas 
     </Typography>
   </div>
 </Box>
