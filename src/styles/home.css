@@ -77,13 +77,15 @@
   display: flex;
   flex-direction: column;
   min-height: 40vh;
-  margin-top: 2rem;
+  margin-top: 0rem;
   width: 100vw !important;   /* 👈 asegura ancho completo */
   margin-left: calc(50% - 50vw) !important; /* 👈 corrige si hay padding lateral del body */
 }
 
 @media (min-width: 900px) {
-  .about-section { flex-direction: row; }
+  .about-section { flex-direction: row; 
+  margin-top: 2rem; /* 👈 Desktop: separado del hero */
+  }
 }
 
 .about-left {
