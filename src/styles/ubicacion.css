@@ -8,9 +8,16 @@
 .ubicacion-title {
   text-align: center !important;
   margin-bottom: 2rem !important;
-  font-family: var(--font-title) !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: bold !important;
   color: var(--color-terracota) !important;
+  font-size: 2.2rem;   /* 👈 intermedio */
+
+  }
+  @media (min-width: 900px) {
+  .ubicacion-title {
+    font-size: 2.7rem !important;  /* 👈 más grande en web */
+  }
 }
 
 /* Contenedor del mapa */
