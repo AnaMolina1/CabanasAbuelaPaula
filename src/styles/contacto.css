@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: flex-start; /* 👈 pegado arriba */
   background-color: transparent;
-  padding: 2rem 0; /* 👈 menos alto */
+  padding: 0 0 0rem 0 !important; /* 👈 sin espacio arriba, solo abajo */
 }
 
 .contacto-box {

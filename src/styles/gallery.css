@@ -61,6 +61,7 @@
 #galeria {
  background-color: var(--color-crema-oscuro) !important;
   padding: 0 1rem 0 1rem; /* 👈 sin espacio abajo */
+  margin-top: 3rem;    /* 👈 separa de la sección anterior */
 }
 
 /* si el Container de MUI mete espacio extra */

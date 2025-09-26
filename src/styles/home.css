@@ -1,19 +1,31 @@
 /* Hero Section */
-#hero {
-  position: relative;
-  height: 40vh;
-  width: 100%;
+#inicio {
+  width: 100vw;
   margin: 0;
   padding: 0;
+}
+
+#hero {
+  position: relative;
+   left: 0 !important;
+  height: 40vh;
+   width: 100vw !important;
+ max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
   background-image: url('/images/hero.jpg');
-  background-size: cover;
+  background-size: cover !important;
   background-position: center;
-    overflow: hidden;
+    overflow: hidden !important;
+     height: 50vh; /* mobile */
 }
 
 @media (min-width: 900px) {
   #hero {
-    height: 60vh;
+     height: 100vh; /* pantalla completa */
+    background-position: center; /* recorte equilibrado */
+    height: 80vh; /* desktop */
+    margin-top: 0px !important; /* solo necesario en desktop para que no tape el navbar */
     width: 100%;
   }
 }
@@ -25,7 +37,7 @@
 .hero-title {
   font-family: var(--font-title) !important;
   color: var(--color-oliva-oscuro) !important;
-  font-weight: 600 !important;
+  font-weight: 900 !important;
   letter-spacing: 1px !important;
   line-height: 1.2 !important;
 
@@ -66,6 +78,8 @@
   flex-direction: column;
   min-height: 40vh;
   margin-top: 2rem;
+  width: 100vw !important;   /* 👈 asegura ancho completo */
+  margin-left: calc(50% - 50vw) !important; /* 👈 corrige si hay padding lateral del body */
 }
 
 @media (min-width: 900px) {
@@ -73,9 +87,9 @@
 }
 
 .about-left {
-   width: 80%; /* en lugar de 100% */
-    margin: 0 auto; /* lo centra */
-  background-color: #b6c1a4;
+    width: 100%;          /* 👈 en mobile ocupa todo */
+  margin: 0;            /* nada de auto */
+  background-color: #d0dcc1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,8 +98,8 @@
 clip-path: polygon(
   0 0,      /* arriba izquierda */
   100% 0,   /* arriba derecha (⬅️ este es el que tenías mal) */
-  100% 85%, /* derecha abajo */
-  50% 100%, /* pico centrado abajo */
+  100% 80%, /* derecha abajo */
+  47% 100%, /* pico centrado abajo */
   0 85%     /* izquierda abajo */
 );
 }
@@ -99,13 +113,13 @@ clip-path: polygon(
 }
 
 .about-title {
-  font-family: var(--font-subtitle); /* 👈 definida en :root */
-  color: var(--color-oliva);
+  font-family: var(--font-title) !important; /* 👈 definida en :root */
+  color: var(--color-oliva-oscuro);
   text-align: center;
-  font-weight: 400;         /* 👈 más liviano que el título */
+  font-weight: 300 !important;         /* 👈 más liviano que el título */
   letter-spacing: 1px;
   line-height: 1.2;
-  text-shadow: 0 0 6px rgba(55, 48, 48, 0.6);
+  text-shadow: 0 0 6px rgba(146, 136, 136, 0.6);
 }
  
   
@@ -127,14 +141,14 @@ clip-path: polygon(
 
 .about-text {
   font-family: "Raleway";
-  font-weight: 500;
+  font-weight: 300;
   color: var(--color-oliva-oscuro);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-   font-size: 1.3rem !important; /* 👈 tamaño equivalente a h4 */
+   font-size: 1.1rem !important; /* 👈 tamaño equivalente a h4 */
   line-height: 1.6;  /* 👈 mejora legibilidad */
 }
 

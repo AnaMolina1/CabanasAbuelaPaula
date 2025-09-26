@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#C26850',
+            backgroundColor: '#a5482eff',
             left: 0,
             right: drawerOpen ? `${drawerWidth}px` : 0, // 👈 el AppBar termina antes del Drawer
             transition: (theme) =>
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#C26850',
+            backgroundColor: '#a63d20ff',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
           }}
         >

@@ -42,7 +42,7 @@ const OnePage: React.FC = () => {
       ) : (
         <>
           {/* Hero */}
-          <section id="inicio" className="section-light">
+          <section id="inicio" style={{ width: '100vw', margin: 0, padding: 0 }}>
             <Home />
           </section>
 

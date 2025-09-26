@@ -10,9 +10,9 @@ const Home: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <Box id="hero">
+      <Box id="hero" sx={{ width: '100vw', maxWidth: '100vw', ml: 0, pl: 0 }}>
   <div className="hero-overlay">
-    <Typography variant="h2" className="hero-title">
+    <Typography variant="h1" className="hero-title">
      Abuela Paula  Cabañas 
     </Typography>
   </div>
