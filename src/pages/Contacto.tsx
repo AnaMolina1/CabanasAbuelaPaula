@@ -20,19 +20,12 @@ const Contacto: React.FC = () => {
             Contacto
           </Typography>
 
-          <Grid container spacing={2}>
-  {/* Dirección */}
+         <Grid container spacing={2}>
+  {/* Dirección (texto plano) */}
   <Grid item xs={12} sm={12} className="contacto-item">
     <LocationOnIcon sx={{ fontSize: 36 }} className="contacto-icon" />
-    <Typography variant="h6">
-      <Link
-        href="https://www.google.com/maps/place/Calle+123,+Tanti,+Córdoba,+Argentina"
-        className="contacto-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Calle 123, Tanti, Córdoba, Argentina
-      </Link>
+    <Typography variant="h6" className="contacto-text">
+      Calle 123, Tanti, Córdoba, Argentina
     </Typography>
   </Grid>
 
@@ -66,6 +59,7 @@ const Contacto: React.FC = () => {
     </Typography>
   </Grid>
 </Grid>
+
 
         
       </Box>

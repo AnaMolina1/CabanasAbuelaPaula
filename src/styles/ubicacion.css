@@ -8,7 +8,7 @@
 .ubicacion-title {
   text-align: center !important;
   margin-bottom: 2rem !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-section) !important;
   font-weight: bold !important;
   color: var(--color-terracota) !important;
   font-size: 2.2rem;   /* 👈 intermedio */
@@ -51,7 +51,7 @@
   right: 16px;
   background-color: var(--color-terracota) !important;
   color: white !important;
-  font-family: var(--font-main) !important;
+  font-family: var(--font-text) !important;
   font-weight: 600 !important;
   padding: 0.6rem 1.2rem !important;
   border-radius: 8px !important;

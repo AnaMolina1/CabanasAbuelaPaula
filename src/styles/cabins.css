@@ -9,7 +9,7 @@
 .cabins-title {
   text-align: center !important;
   margin-bottom: 2rem !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-section) !important;
   font-weight: bold !important;
   color: var(--color-terracota) !important;
   font-size: 2.2rem;   /* 👈 intermedio */
@@ -33,11 +33,11 @@
 .comodidades-title {
   text-align: center;
   margin-bottom: 2rem !important;
-  font-family:'Poppins', sans-serifs !important;
-  font-weight: bold;
+  font-family: var(--font-section) !important;
+  font-weight: bold !important;
   color: var(--color-oliva-oscuro) !important;
    /* tamaño fluido */
-  font-size: clamp(2.2rem, 6vw, 2.7rem) !important;
+  font-size: clamp(2.0rem, 6vw, 2.3rem) !important;
 }
 
 /* Ítems de Comodidades */
@@ -89,13 +89,14 @@
 
 
 .cabin-card-title {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-section) !important;
   font-weight: bold !important;
   color: var(--color-terracota);
   margin-bottom: 0.5rem;
 }
 
 .cabin-card-text {
+  font-family: var(--font-text) !important;
   font-size: 0.9rem;
   color: #333;
 }

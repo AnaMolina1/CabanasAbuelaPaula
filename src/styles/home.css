@@ -36,6 +36,7 @@
 /* estilos reales para que no quede vacía */
 .hero-title {
   font-family: var(--font-title) !important;
+  
   color: var(--color-oliva-oscuro) !important;
   font-weight: 900 !important;
   letter-spacing: 1px !important;
@@ -47,7 +48,7 @@
   max-width: 90%;
 
   /* escalado fluido */
-  font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+  font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
 
   /* cortes seguros */
   white-space: normal !important;
@@ -91,7 +92,7 @@
 .about-left {
     width: 100%;          /* 👈 en mobile ocupa todo */
   margin: 0;            /* nada de auto */
-  background-color: #d0dcc1;
+  background-color: var(--color-oliva-claro);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,19 +118,18 @@ text-align: center !important; /* asegura que lo que esté adentro se centre */
 }
 
 .about-title {
-  font-family: var(--font-title) !important; /* 👈 definida en :root */
+  font-family: var(--font-title) !important;
   color: var(--color-oliva-oscuro);
   text-align: center;
-  font-weight: 300 !important;         /* 👈 más liviano que el título */
+  font-weight: 300 !important;
   letter-spacing: 1px;
   line-height: 1.2;
   text-shadow: 0 0 6px rgba(146, 136, 136, 0.6);
 
-  display: block !important;        /* asegura que ocupe todo el ancho */
-  margin: 0 auto !important;       /* lo centra si tiene ancho propio */
-  width: 100% !important;          /* 👈 ocupa todo el ancho disponible */
-
-  margin-right: 1rem !important;  /* 👈 ajustá este valor a mano */
+  display: inline-block !important; /* 👈 ocupa solo su ancho de texto */
+  margin: 0 auto;                   /* sigue centrado */
+  padding-right: 1rem;              /* 👈 esto lo “corre” de la derecha */
+transform: translateX(-1.3rem); /* 👈 mueve el texto hacia la izquierda */
 }
  
   
@@ -139,7 +139,7 @@ text-align: center !important; /* asegura que lo que esté adentro se centre */
   display: flex;
   justify-content: center;
   padding: 2rem;
-  margin-left: -1.5rem;
+  margin-left: -1.3rem;
 }
 
 @media (min-width: 900px) {
@@ -150,7 +150,7 @@ text-align: center !important; /* asegura que lo que esté adentro se centre */
 }
 
 .about-text {
-  font-family: "Raleway";
+  font-family: var(--font-text) !important;
   font-weight: 300;
   color: var(--color-oliva-oscuro);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);

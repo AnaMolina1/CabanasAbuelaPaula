@@ -9,7 +9,7 @@
 .contacto-box {
   width: 100%;                /* un poco más compacto */     
   max-width: none;  /* 👈 quita la limitación */
-  background-color: #bcc7ac; /* #b6c1averde oliva claro */
+  background-color: var(--color-oliva-claro);
   padding: 0 1rem 1.5rem 1.5rem;
   color: var(--color-crema);
   overflow: hidden;
@@ -18,7 +18,7 @@
 
 /* Título */
 .contacto-title {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: var(--font-section) !important;
   color: var(--color-terracota) !important;
   font-weight: bold !important;
   margin-bottom: 2rem !important;  /* 👈 más cerca del contenido */
@@ -35,10 +35,20 @@ font-size: 2.2rem;   /* 👈 intermedio */
 
 /* Items (dirección, whatsapp, insta) */
 .contacto-item {
+  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem; /* separa icono y texto */ 
+
+
+  
+}
+
+.contacto-item .MuiTypography-root {
+  font-family: var(--font-section) !important;
+  color: var(--color-oliva-oscuro) !important; /* 👈 fuerza color correcto */
+  font-weight: 550 !important; /* 👈 más negrita (Regular=400, Bold=700, 600 es semi-bold) */
 }
 
 .contacto-icon {
@@ -51,12 +61,12 @@ font-size: 2.2rem;   /* 👈 intermedio */
 
 .contacto-icon:hover {
   transform: scale(1.2); /* efecto al pasar el mouse */
-  color: var(--color-terracota);
+  color: var(--color-crema);
 }
 
 .contacto-link {
   color: var(--color-oliva-oscuro) !important;
-  text-decoration: underline;
+  
 }
 .contacto-link:hover {
   color: var(--color-oliva-oscuro) !important;
