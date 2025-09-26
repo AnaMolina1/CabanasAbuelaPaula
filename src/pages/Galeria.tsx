@@ -16,15 +16,15 @@ import { PrevArrow, NextArrow } from '../components/CustomArrow';
 import '../styles/gallery.css';
 
 const imagenes = [
-  '/images/imagen1.jpg',
-  '/images/imagen2.jpg',
-  '/images/imagen3.jpg',
-  '/images/imagen4.jpg',
-  '/images/imagen5.jpg',
-  '/images/imagen6.jpg',
-  '/images/imagen7.jpg',
-  '/images/imagen8.jpg',
-  '/images/imagen9.jpg',
+  '/images/imggaleria/imagen1.jpg',
+  '/images/imggaleria/imagen2.jpg',
+  '/images/imggaleria/imagen3.jpg',
+  '/images/imggaleria/imagen4.jpg',
+  '/images/imggaleria/imagen5.jpg',
+  '/images/imggaleria/imagen6.jpg',
+  '/images/imggaleria/imagen7.jpg',
+  '/images/imggaleria/imagen8.jpg',
+  '/images/imggaleria/imagen9.jpg',
 ];
 
 const Galeria: React.FC = () => {

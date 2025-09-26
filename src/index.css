@@ -22,8 +22,7 @@ a:hover {
 
 /* Eliminamos el flex y centrado para que el contenido comience desde arriba */
 body {
-  background: linear-gradient(135deg, #a19051, #d0a33b);
-  margin: 0;
+    margin: 0;
   padding: 0;
   min-width: 320px;
   min-height: 100vh;

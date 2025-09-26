@@ -1,7 +1,7 @@
 /* Sección Nuestras Cabañas */
 .cabins-section {
   background-color: var(--color-crema);
-  padding: 2rem;
+  padding: 2rem 0rem !important;
   border-radius: 16px;
 }
 
@@ -28,15 +28,15 @@
   margin-bottom: 2rem !important;
   font-family: var(--font-subtitle) !important;
   font-weight: bold;
-  color: var(--color-crema);
+  color: var(--color-oliva-oscuro) !important;
    /* tamaño fluido */
-  font-size: clamp(2.5rem, 6vw, 3rem) !important;
+  font-size: clamp(2.2rem, 6vw, 2.7rem) !important;
 }
 
 /* Ítems de Comodidades */
 .comodidad-item {
   text-align: center;
-  color: var(--color-crema);
+  color: var(--color-oliva-oscuro) !important;
   transition: transform 0.3s ease;
 }
 

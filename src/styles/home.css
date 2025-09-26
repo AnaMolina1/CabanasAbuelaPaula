@@ -103,7 +103,9 @@ clip-path: polygon(
   100% 80%, /* derecha abajo */
   47% 100%, /* pico centrado abajo */
   0 85%     /* izquierda abajo */
+  
 );
+text-align: center !important; /* asegura que lo que esté adentro se centre */
 }
 
 @media (min-width: 900px) {
@@ -122,6 +124,12 @@ clip-path: polygon(
   letter-spacing: 1px;
   line-height: 1.2;
   text-shadow: 0 0 6px rgba(146, 136, 136, 0.6);
+
+  display: block !important;        /* asegura que ocupe todo el ancho */
+  margin: 0 auto !important;       /* lo centra si tiene ancho propio */
+  width: 100% !important;          /* 👈 ocupa todo el ancho disponible */
+
+  margin-right: 1rem !important;  /* 👈 ajustá este valor a mano */
 }
  
   

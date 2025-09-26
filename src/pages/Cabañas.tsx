@@ -40,12 +40,12 @@ const Cabañas: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const imagenes = [
-    '/images/imgcolor/cabaña1.jpg',
-    '/images/imgcolor/cabaña2.jpg',
-    '/images/imgcolor/cabaña3.jpg',
-    '/images/imgcolor/cabaña4.jpg',
-    '/images/imgcolor/cabaña5.jpg',
-    '/images/imgcolor/cabaña6.jpg',
+    '/images/imgcabañas/cabaña1.jpg',
+    '/images/imgcabañas/cabaña2.jpg',
+    '/images/imgcabañas/cabaña3.jpg',
+    '/images/imgcabañas/cabaña4.jpg',
+    '/images/imgcabañas/cabaña5.jpg',
+    '/images/imgcabañas/cabaña6.jpg',
   ];
 
   useEffect(() => {
