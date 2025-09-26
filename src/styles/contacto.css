@@ -38,13 +38,20 @@ font-size: 2.2rem;   /* 👈 intermedio */
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: var(--color-oliva-oscuro);
+  gap: 0.5rem; /* separa icono y texto */ 
 }
 
 .contacto-icon {
   margin-right: 0.5rem;
   color: var(--color-oliva-oscuro);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+    flex-shrink: 0;
+}
+
+.contacto-icon:hover {
+  transform: scale(1.2); /* efecto al pasar el mouse */
+  color: var(--color-terracota);
 }
 
 .contacto-link {

@@ -3,12 +3,13 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
+
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 import '../styles/contacto.css'; // 👈 importa tu CSS nuevo
+import Link from '@mui/material/Link';
 
 const Contacto: React.FC = () => {
   return (
@@ -20,42 +21,52 @@ const Contacto: React.FC = () => {
           </Typography>
 
           <Grid container spacing={2}>
-            {/* Dirección */}
-            <Grid item xs={12} sm={12} className="contacto-item">
-              <LocationOnIcon className="contacto-icon" />
-              <Typography variant="h6">
-                Dirección: Calle 123, Tanti, Córdoba, Argentina
-              </Typography>
-            </Grid>
+  {/* Dirección */}
+  <Grid item xs={12} sm={12} className="contacto-item">
+    <LocationOnIcon sx={{ fontSize: 36 }} className="contacto-icon" />
+    <Typography variant="h6">
+      <Link
+        href="https://www.google.com/maps/place/Calle+123,+Tanti,+Córdoba,+Argentina"
+        className="contacto-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Calle 123, Tanti, Córdoba, Argentina
+      </Link>
+    </Typography>
+  </Grid>
 
-            {/* WhatsApp */}
-            <Grid item xs={12} sm={12} className="contacto-item">
-              <WhatsAppIcon className="contacto-icon" />
-              <Typography variant="h6">
-                WhatsApp:{' '}
-                <Link
-                  href="https://wa.me/541234567890"
-                  className="contacto-link"
-                >
-                  +54 123 456 7890
-                </Link>
-              </Typography>
-            </Grid>
+  {/* WhatsApp */}
+  <Grid item xs={12} sm={12} className="contacto-item">
+    <WhatsAppIcon sx={{ fontSize: 36 }} className="contacto-icon" />
+    <Typography variant="h6">
+      <Link
+        href="https://wa.me/541234567890"
+        className="contacto-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        +54 123 456 7890
+      </Link>
+    </Typography>
+  </Grid>
 
-            {/* Instagram */}
-            <Grid item xs={12} sm={12} className="contacto-item">
-              <InstagramIcon className="contacto-icon" />
-              <Typography variant="h6">
-                Instagram:{' '}
-                <Link
-                  href="https://www.instagram.com/abuelapaulatanti/?hl=es-la"
-                  className="contacto-link"
-                >
-                  @abuelapaulatanti
-                </Link>
-              </Typography>
-            </Grid>
-          </Grid>
+  {/* Instagram */}
+  <Grid item xs={12} sm={12} className="contacto-item">
+    <InstagramIcon sx={{ fontSize: 36 }} className="contacto-icon" />
+    <Typography variant="h6">
+      <Link
+        href="https://www.instagram.com/abuelapaulatanti/?hl=es-la"
+        className="contacto-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @abuelapaulatanti
+      </Link>
+    </Typography>
+  </Grid>
+</Grid>
+
         
       </Box>
     </section>
