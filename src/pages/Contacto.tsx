@@ -41,7 +41,7 @@ const Contacto: React.FC = () => {
       color: 'var(--color-oliva-oscuro)',
       fontWeight: 550,
       fontSize: { xs: '0.95rem', md: '1.1rem' }, // 📱 mobile / 💻 desktop
-      lineHeight: 1.4,
+      lineHeight: '36px', // 👈 igual al tamaño del ícono
     }}
   >
     Calle 123, Tanti, Córdoba, Argentina
@@ -58,7 +58,7 @@ const Contacto: React.FC = () => {
       color: 'var(--color-oliva-oscuro)',
       fontWeight: 550,
       fontSize: { xs: '0.95rem', md: '1.1rem' },
-      lineHeight: 1.4,
+      lineHeight: '36px', // 👈 igual al tamaño del ícono
     }}
   >
     <Link
@@ -82,7 +82,7 @@ const Contacto: React.FC = () => {
       color: 'var(--color-oliva-oscuro)',
       fontWeight: 550,
       fontSize: { xs: '0.95rem', md: '1.1rem' },
-      lineHeight: 1.4,
+      lineHeight: '36px', // 👈 igual al tamaño del ícono
     }}
   >
     <Link
