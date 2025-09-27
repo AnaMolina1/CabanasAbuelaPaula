@@ -51,7 +51,7 @@ const pendientesCount = reservas.filter(
     <Container
       maxWidth="sm"
       sx={{
-        marginTop: isMobile ? '1rem' : '0rem', // un poco más arriba
+        marginTop: isMobile ? '0rem' : '0rem', // un poco más arriba
         padding: isMobile ? '0.5rem' : '1rem',
       }}
     >

@@ -44,7 +44,7 @@ const Contacto: React.FC = () => {
       lineHeight: '36px', // 👈 igual al tamaño del ícono
     }}
   >
-    Calle 123, Tanti, Córdoba, Argentina
+    Calle 123, Tanti, Córdoba
   </Typography>
 </Grid>
 
