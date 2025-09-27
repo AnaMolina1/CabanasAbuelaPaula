@@ -37,7 +37,7 @@
   font-weight: bold !important;
   color: var(--color-oliva-oscuro) !important;
    /* tamaño fluido */
-  font-size: clamp(2.0rem, 6vw, 2.3rem) !important;
+  font-size: clamp(1.8rem, 6vw, 2.1rem) !important;
 }
 
 /* Ítems de Comodidades */
@@ -55,7 +55,7 @@
 .cabin-card {
   border-radius: 16px;
   background-color: var(--color-crema);
-  border: 2px solid var(--color-terracota);
+  border: 2px solid var(--color-crema);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   height: 100%; /* 🔑 todas las tarjetas iguales */
   display: flex;

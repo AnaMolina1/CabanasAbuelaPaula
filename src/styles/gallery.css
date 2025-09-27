@@ -78,6 +78,7 @@
   font-size: 2.2rem;   /* 👈 intermedio */
   font-weight: bold !important;
   color: var(--color-terracota) !important;
+  
 }
 
   @media (min-width: 900px) {

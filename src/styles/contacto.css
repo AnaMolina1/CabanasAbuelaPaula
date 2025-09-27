@@ -21,7 +21,7 @@
   font-family: var(--font-section) !important;
   color: var(--color-terracota) !important;
   font-weight: bold !important;
-  margin-bottom: 2rem !important;  /* 👈 más cerca del contenido */
+  margin-bottom: 3rem !important;  /* 👈 más cerca del contenido */
   margin-top: 0 !important;     /* 👈 cerca del borde superior */
   text-align: center;
 font-size: 2.2rem;   /* 👈 intermedio */

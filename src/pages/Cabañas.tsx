@@ -74,7 +74,16 @@ const Cabañas: React.FC = () => {
   return (
     <Container maxWidth="lg" className="cabins-section">
       {/* Título principal */}
-      <Typography variant="h3" className="cabins-title">
+      <Typography
+  variant="h3"
+  className="galeria-title"
+  sx={{
+    fontSize: { xs: "2.2rem", md: "2.7rem" }, // responsive directo
+    fontFamily: "var(--font-section)",
+    fontWeight: "bold",
+    color: "var(--color-terracota)",
+  }}
+>
         Nuestras Cabañas
       </Typography>
 

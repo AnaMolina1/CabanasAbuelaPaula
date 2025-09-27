@@ -34,7 +34,16 @@ const Ubicacion: React.FC = () => {
   return (
     <Container maxWidth="lg" className="ubicacion-section">
       {/* Título */}
-      <Typography variant="h3" className="ubicacion-title">
+      <Typography
+  variant="h3"
+  className="galeria-title"
+  sx={{
+    fontSize: { xs: "2.2rem", md: "2.7rem" }, // responsive directo
+    fontFamily: "var(--font-section)",
+    fontWeight: "bold",
+    color: "var(--color-terracota)",
+  }}
+>
         Dónde estamos
       </Typography>
 

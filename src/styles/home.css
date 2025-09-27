@@ -129,7 +129,7 @@ text-align: center !important; /* asegura que lo que esté adentro se centre */
   display: inline-block !important; /* 👈 ocupa solo su ancho de texto */
   margin: 0 auto;                   /* sigue centrado */
   padding-right: 1rem;              /* 👈 esto lo “corre” de la derecha */
-transform: translateX(-1.3rem); /* 👈 mueve el texto hacia la izquierda */
+transform: translateX(-1.5rem); /* 👈 mueve el texto hacia la izquierda */
 }
  
   
@@ -139,7 +139,7 @@ transform: translateX(-1.3rem); /* 👈 mueve el texto hacia la izquierda */
   display: flex;
   justify-content: center;
   padding: 2rem;
-  margin-left: -1.3rem;
+  margin-left: -2rem;
 }
 
 @media (min-width: 900px) {

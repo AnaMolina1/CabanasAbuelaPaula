@@ -61,7 +61,16 @@ const Galeria: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-       <Typography variant="h3" className="galeria-title">
+       <Typography
+  variant="h3"
+  className="galeria-title"
+  sx={{
+    fontSize: { xs: "2.2rem", md: "2.7rem" }, // responsive directo
+    fontFamily: "var(--font-section)",
+    fontWeight: "bold",
+    color: "var(--color-terracota)",
+  }}
+>
   Galería
 </Typography>
 
