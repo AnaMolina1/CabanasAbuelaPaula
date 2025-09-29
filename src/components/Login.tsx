@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import auth from '../firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Container, Box, Typography, TextField, Button, Alert } from '@mui/material';
+
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -20,6 +22,20 @@ const Login: React.FC = () => {
       setError("Error al iniciar sesión. Verifica tus credenciales.");
     }
   };
+
+  const handlePasswordReset = async () => {
+  if (!email) {
+    setError("Ingresá tu email para poder recuperar la contraseña.");
+    return;
+  }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    alert("Te enviamos un correo para restablecer tu contraseña.");
+  } catch (err) {
+    console.error(err);
+    setError("Error al enviar el correo de recuperación.");
+  }
+};
 
   return (
     <Container maxWidth="sm">
@@ -72,6 +88,17 @@ const Login: React.FC = () => {
               Iniciar Sesión
             </Button>
           </form>
+          {/* 🔑 Nueva opción para recuperar contraseña */}
+          <Button 
+            variant="text"
+            color="secondary"
+            fullWidth
+            sx={{ mt: 1, fontSize: '0.9rem', textTransform: 'none' }}
+            onClick={handlePasswordReset}
+          >
+            ¿Olvidaste tu contraseña?
+          </Button>
+
           {/* Botón Cancelar para volver al inicio */}
           <Button 
             variant="outlined" 
@@ -82,6 +109,17 @@ const Login: React.FC = () => {
           >
             Cancelar
           </Button>
+          {/* Botón Cancelar para volver al inicio */}
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            fullWidth
+            sx={{ mt: 2, py: 1, fontSize: '1rem' }}
+            onClick={() => navigate('/')}
+          >
+            Cancelar
+          </Button>
+          
         </Box>
       </Box>
     </Container>
